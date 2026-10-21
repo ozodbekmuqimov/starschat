@@ -4,25 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>UZ Messenger</title>
-<link rel="icon" href="data:image/png;base64,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">
 <style>
-:root{--bg:#0e1621;--pn:#17212b;--ln:#0b121a;--ac:#2b95d6;--me:#2b5278;--mu:#7f91a4;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#0e1621;--pn:#17212b;--ln:#0b121a;--ac:#2b95d6;--me:#2b5278;--mu:#7f91a4;color-scheme:dark}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:#e8eef4;overflow:hidden}
 .hidden{display:none!important}
 button{font:inherit;cursor:pointer;border:0;color:inherit;background:none}
-input,select{font:inherit;color:inherit}
+input,select,textarea{font:inherit;color:inherit}
 #auth{height:100%;display:flex;align-items:center;justify-content:center;padding:1rem}
 .box{background:var(--pn);border-radius:18px;padding:2rem;width:360px;max-width:100%;text-align:center}
 .box .logo{font-size:3.2rem}.box h1{font-size:1.3rem;margin:.4rem 0}.box p{color:var(--mu);font-size:.88rem;margin-bottom:1rem}
-.box input,.md input,.md select{width:100%;padding:.75rem 1rem;border-radius:10px;border:1px solid #2a3948;background:var(--bg);margin:.3rem 0 .6rem}
-.box input{text-align:center}
-input:focus,select:focus{outline:0;border-color:var(--ac)}
+.box input{width:100%;padding:.75rem 1rem;border-radius:10px;border:1px solid #2a3948;background:var(--bg);margin:.3rem 0 .6rem;text-align:center}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--ac)}
 .btn{width:100%;padding:.8rem;border-radius:10px;background:var(--ac);color:#fff;font-weight:700}
 .link{color:var(--ac);font-size:.82rem;margin-top:.6rem}
 #err{color:#f87171;font-size:.82rem;min-height:1.1rem;margin-top:.5rem}
-#toast{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:12px;left:12px;max-width:340px;margin-left:auto;background:#223244;border-left:4px solid var(--ac);padding:.8rem 1rem;border-radius:10px;font-size:.88rem;z-index:60;box-shadow:0 6px 24px #0008}
+#toast{position:fixed;top:12px;right:12px;left:12px;max-width:340px;margin-left:auto;background:#223244;border-left:4px solid var(--ac);padding:.8rem 1rem;border-radius:10px;font-size:.88rem;z-index:60;box-shadow:0 6px 24px #0008}
 #toast b{font-size:1.2rem;letter-spacing:3px}
 #app{height:100%;display:flex}
 .side{width:340px;background:var(--pn);border-right:1px solid var(--ln);display:flex;flex-direction:column;flex-shrink:0}
@@ -74,7 +72,7 @@ input:focus,select:focus{outline:0;border-color:var(--ac)}
 .ck{display:flex;gap:.6rem;align-items:center;padding:.35rem 0;text-align:left;font-size:.9rem}
 .ck input{width:auto;margin:0}
 .navt{display:flex;border-bottom:1px solid var(--ln)}.nt{flex:1;padding:.6rem;color:var(--mu);font-size:.85rem;border-bottom:2px solid transparent}.nt.on{color:var(--ac);border-color:var(--ac)}
-.lg{width:34px;height:34px;border-radius:50%;flex-shrink:0}.box img.logo{width:104px;height:104px;border-radius:50%;display:block;margin:0 auto}
+.lg{width:34px;height:34px;border-radius:50%;flex-shrink:0}
 #feed{flex:1;display:flex;flex-direction:column;min-height:0}.fbody{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:1rem;align-items:center}.fbody>*{width:100%;max-width:600px}#fl{display:flex;flex-direction:column;gap:1rem}
 .pc{background:var(--pn);border-radius:14px;padding:1rem;display:flex;flex-direction:column;gap:.7rem}.pc textarea{background:transparent;border:0;color:inherit;resize:none;min-height:56px;outline:0;font:inherit}.pc img,.pc video,.m video{max-width:100%;border-radius:10px}.m audio{max-width:100%}
 .ph2{display:flex;gap:.7rem;align-items:center}.ph2 small{display:block;color:var(--mu);font-size:.72rem}.pb{white-space:pre-wrap;word-wrap:break-word}.pa{display:flex;gap:.8rem;align-items:center;color:var(--mu);font-size:.85rem}
@@ -83,12 +81,10 @@ input:focus,select:focus{outline:0;border-color:var(--ac)}
 @keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
 @keyframes sl{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
 @keyframes fd{from{opacity:0}to{opacity:1}}
-.box{animation:up .4s}.box.sw{animation:pop .25s}#app{animation:fd .4s}.ov{animation:fd .2s}.ov>.md{animation:pop .22s}#chat,#feed{animation:sl .25s}.ph{animation:fd .3s}.msgs>.m:last-child,.pc{animation:up .25s}
-.rv{width:200px;height:200px;border-radius:50%;object-fit:cover;display:block;cursor:pointer;border:3px solid var(--ac)}#rpv{align-self:center;margin:.5rem;cursor:default}
+.box{animation:up .4s}#app{animation:fd .4s}.ov{animation:fd .2s}.ov>.md{animation:pop .22s}#chat,#feed{animation:sl .25s}.msgs>.m:last-child,.pc{animation:up .25s}
 #pin{padding:.4rem 1rem;background:var(--pn);border-bottom:1px solid var(--ln);border-left:3px solid var(--ac);font-size:.82rem;cursor:pointer;display:flex;gap:.5rem;align-items:center}#pin span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#pin small{color:var(--mu)}
-#sel{display:flex;justify-content:space-between;align-items:center;padding:.4rem 1rem;background:#223244}.m.sel{outline:2px solid var(--ac)}.pm{float:left;margin-right:.3rem;font-size:.7rem}#rbar{gap:.8rem;align-items:center}#pav,#pn{cursor:pointer}
-.md textarea{width:100%;min-height:150px;padding:.7rem;border-radius:10px;border:1px solid #2a3948;background:var(--bg);margin:.3rem 0 .6rem;font:12px/1.4 ui-monospace,Consolas,monospace;color:#c9d6e3;resize:vertical}.md .ck button{margin-left:auto}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+#sel{display:flex;justify-content:space-between;align-items:center;padding:.4rem 1rem;background:#223244}.m.sel{outline:2px solid var(--ac)}.pm{float:left;margin-right:.3rem;font-size:.7rem}
+#rbar{gap:.8rem;align-items:center}#pav,#pn{cursor:pointer}
 @media(max-width:800px){.side{width:100%}.back{display:block}.in-chat .side{display:none}#app:not(.in-chat) .main{display:none}#app.feed .side{display:none}#app.feed .main{display:flex!important}.m{max-width:86%}input,textarea{font-size:16px!important}.box{padding:1.5rem}}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:#2a3948;border-radius:3px}
 </style>
@@ -97,7 +93,7 @@ input:focus,select:focus{outline:0;border-color:var(--ac)}
 <div id="toast" class="hidden"></div>
 
 <div id="auth"><div class="box">
- <img class="logo" src="data:image/png;base64,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" alt="UZ"><h1 id="t"></h1><p id="s"></p>
+ <div class="logo">💬</div><h1 id="t">Messenger</h1><p id="s">Email manzilingizni kiriting</p>
  <input id="f" autocomplete="off">
  <button class="btn" id="go">Davom etish</button>
  <button class="link hidden" id="re">Kodni qayta yuborish</button>
@@ -106,7 +102,7 @@ input:focus,select:focus{outline:0;border-color:var(--ac)}
 
 <div id="app" class="hidden">
  <aside class="side">
-  <div class="top"><img class="lg" src="data:image/png;base64,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" alt="UZ"><button class="ib" id="menu" title="Profil">☰</button><input id="q" placeholder="Qidirish"><button class="ib" id="new" title="Yangi guruh/kanal">✏️</button></div>
+  <div class="top"><button class="ib" id="menu" title="Profil">☰</button><input id="q" placeholder="Qidirish (@username yoki email)"><button class="ib" id="new" title="Yangi guruh/kanal">✏️</button></div>
   <div class="navt"><button class="nt on" data-v="chats">💬 Chatlar</button><button class="nt" data-v="feed">📰 Postlar</button><button class="nt" id="ctb">👤 Kontaktlar</button></div><div class="list" id="list"></div>
  </aside>
  <main class="main">
@@ -116,13 +112,13 @@ input:focus,select:focus{outline:0;border-color:var(--ac)}
    <div class="hd"><button class="back" id="back">←</button><div class="av" id="pav"></div><div><b id="pn"></b><small id="ps"></small></div></div>
    <div id="pin" class="hidden"></div><div id="sel" class="hidden"><button class="btn" id="selp" style="width:auto;padding:.4rem 1rem"></button><button id="selx" class="ib">✕</button></div><div class="msgs" id="msgs"></div>
    <div id="att" class="hidden"><span id="an"></span><button id="ax">✕</button></div>
-   <video id="rpv" class="rv hidden" muted playsinline></video><div id="emo" class="hidden"></div>
+   <div id="emo" class="hidden"></div>
    <form class="bar" id="form">
     <label class="ib" style="display:flex;align-items:center;justify-content:center;cursor:pointer">📎<input type="file" id="file" hidden></label>
-    <button type="button" class="ib" id="eb">😊</button><button type="button" class="ib" id="ra" title="Ovozli xabar">🎤</button><button type="button" class="ib" id="rv" title="Dumaloq video">⭕</button>
+    <button type="button" class="ib" id="eb">😊</button>
     <input id="msg" placeholder="Xabar yozing..." autocomplete="off"><button class="ib send">➤</button>
    </form>
-   <div id="rbar" class="bar hidden"><span>🔴 <b id="rt">0:00</b></span><span style="flex:1"></span><button class="ib" id="rx" title="Bekor qilish">🗑</button><button class="ib send" id="rs" title="Yuborish">➤</button></div><div id="jb" class="hidden"><span id="jt"></span> <button class="btn" id="jbtn" style="margin-top:.5rem">Qo'shilish</button></div>
+   <div id="jb" class="hidden"><span id="jt"></span> <button class="btn" id="jbtn" style="margin-top:.5rem">Qo'shilish</button></div>
   </div>
  </main>
 </div>
@@ -141,21 +137,9 @@ input:focus,select:focus{outline:0;border-color:var(--ac)}
  <div id="ctl" style="text-align:left"></div>
  <button class="link" id="ctx">Yopish</button></div></div>
 
-<div class="ov hidden" id="ci"><div class="md">
- <div class="av" id="cav"></div>
- <label class="ib send" id="cpl" style="display:inline-flex;align-items:center;justify-content:center;cursor:pointer">📷<input type="file" id="cpic" accept="image/*" hidden></label>
- <input id="cname" placeholder="Nomi"><div id="cinfo" style="color:var(--mu);font-size:.8rem;margin-bottom:.6rem"></div>
- <button class="btn hidden" id="cadd" style="margin-bottom:.5rem"></button><button class="btn" id="csv">Saqlash</button>
- <div class="sec hidden" id="cbot" style="text-align:left"><b>🤖 Bot sozlamalari</b><div style="font-size:.75rem;word-break:break-all;margin:.3rem 0">Token: <span id="ctok"></span></div>
-  <div style="display:flex;gap:.4rem"><input id="bc1" placeholder="/buyruq"><input id="bc2" placeholder="Javob matni"></div>
-  <button class="btn" id="bca">➕ Buyruq qo'shish</button><div id="bcl"></div>
-  <div style="margin-top:.8rem">💻 Bot kodi (JavaScript)</div><textarea id="bcode" spellcheck="false"></textarea><button class="btn" id="bcs">Kodni saqlash</button></div>
- <button class="link" id="cx">Yopish</button>
-</div></div>
-
 <div class="ov hidden" id="nw"><div class="md">
  <h2>Yangi guruh yoki kanal</h2>
- <select id="nt"><option value="g">👥 Guruh</option><option value="ch">📢 Kanal (ommaviy)</option><option value="bot">🤖 Bot (BotFather orqali)</option></select>
+ <select id="nt"><option value="g">👥 Guruh</option><option value="ch">📢 Kanal (ommaviy)</option></select>
  <input id="nname" placeholder="Nomi">
  <div id="nmem" style="text-align:left"></div>
  <button class="btn" id="mk">Yaratish</button>
@@ -163,269 +147,541 @@ input:focus,select:focus{outline:0;border-color:var(--ac)}
 </div></div>
 
 <script>
-const $=s=>document.querySelector(s);
-const ls={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return 1}catch(e){alert('Xotira to\'ldi. Kichikroq fayl yuboring.');return 0}}};
-const U=()=>ls.get('tg_u',[]),M=()=>ls.get('tg_m',[]),C=()=>ls.get('tg_c',[]);
-const uid=()=>Date.now()*1000+Math.floor(Math.random()*1000);
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const kdf=async(p,s)=>{const k=await crypto.subtle.importKey('raw',new TextEncoder().encode(p),'PBKDF2',false,['deriveBits']);
- const b=await crypto.subtle.deriveBits({name:'PBKDF2',salt:new TextEncoder().encode(s),iterations:150000,hash:'SHA-256'},k,256);
- return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')};
-const EMO='😀 😁 😂 🤣 😊 😍 😘 😎 🤔 😢 😭 😡 👍 👎 👏 🙏 💪 🔥 ❤️ 💔 🎉 ✨ 🌹 🎁 ☕ 🍕 ⚽ 🚀 🌍 😴 🤝 👋 😱 🥰 😇 🙄 😅 🤗 🤩 😜 🫡 🥳 😏 🤯 😬 🙌 💯 ✅ ❌ ⭐ 🌙 ☀️ 🐱 🐶 🍉 🎵'.split(' ');
-let me=null,peer=null,flow={},q='',att=null;
-const uBy=id=>U().find(u=>u.id===id);
-const sz=n=>n>1048576?(n/1048576).toFixed(1)+' MB':Math.ceil(n/1024)+' KB';
-const tm=t=>new Date(t).toLocaleTimeString('uz-UZ',{hour:'2-digit',minute:'2-digit'});
-const dayOf=t=>new Date(t).toLocaleDateString('uz-UZ',{day:'numeric',month:'long'});
-const avHtml=u=>u.avatar?`<img src="${u.avatar}" alt="">`:esc((u.name||'?')[0].toUpperCase());
-const dmId=(a,b)=>`d${Math.min(a,b)}_${Math.max(a,b)}`;
-const apk=f=>/\.apk$/i.test(f.name)||f.type==='application/vnd.android.package-archive';
-// fayllar IndexedDB da (hajm cheklovi yo'q, faqat qurilma xotirasi)
-const idb=new Promise(r=>{try{const q=indexedDB.open('tgf',1);q.onupgradeneeded=()=>q.result.createObjectStore('f');q.onsuccess=()=>r(q.result);q.onerror=()=>r(null)}catch(e){r(null)}});
-const fput=async(k,b)=>{const d=await idb;if(!d)throw 0;return new Promise((ok,no)=>{const t=d.transaction('f','readwrite');t.objectStore('f').put(b,k);t.oncomplete=ok;t.onerror=no})};
-const fget=async k=>{const d=await idb;return d?new Promise(ok=>{const r=d.transaction('f').objectStore('f').get(k);r.onsuccess=()=>ok(r.result);r.onerror=()=>ok(null)}):null};
-const urls={};const furl=async k=>{if(urls[k])return urls[k];const b=await fget(k);return b?(urls[k]=URL.createObjectURL(b)):''};
-const fileHtml=f=>{const t=f.type||'',n=esc(f.name),card=a=>`<a class="fc" ${a} download="${n}">📎<span>${n}<br><small>${sz(f.size)}</small></span></a>`;
- if(f.data)return t.startsWith('image/')?`<img src="${f.data}" alt="">`:card(`href="${f.data}"`);
- const k=`data-k="${esc(f.key)}"`;if(f.rec==='v')return `<video class="rv" ${k} playsinline loop></video>`;return t.startsWith('image/')?`<img ${k} alt="">`:t.startsWith('video/')?`<video controls ${k}></video>`:t.startsWith('audio/')?`<audio controls ${k}></audio>`:card(k)};
-const hydrate=el=>el.querySelectorAll('[data-k]').forEach(async n=>{const u=await furl(n.dataset.k);if(u)n[n.tagName==='A'?'href':'src']=u});
-// postlar
-function view(v){$('#app').classList.toggle('feed',v==='feed');$('#feed').classList.toggle('hidden',v!=='feed');$('#chat').classList.toggle('hidden',v==='feed'||!peer);$('#ph').classList.toggle('hidden',v==='feed'||!!peer);document.querySelectorAll('.nt').forEach(b=>b.classList.toggle('on',b.dataset.v===v));if(v==='feed')renderFeed()}
-function renderFeed(){const L=ls.get('tg_l',{});
- $('#fl').innerHTML=[...ls.get('tg_p',[])].reverse().map(p=>{const u=uBy(p.a)||{name:'?'},l=L[p.id]||[],y=l.includes(me.id);
-  return `<div class="pc"><div class="ph2"><div class="av">${avHtml(u)}</div><div><b>${esc(u.name)}</b><small>${dayOf(p.at)} ${tm(p.at)}</small></div></div>${p.b?`<div class="pb">${esc(p.b)}</div>`:''}${p.file?fileHtml(p.file):''}<div class="pa"><button data-l="${p.id}">${y?'❤️':'🤍'} ${l.length}</button>${p.a===me.id?`<button data-d="${p.id}">🗑</button>`:''}</div></div>`}).join('')||'<div class="empty">Postlar yo\'q. Birinchi bo\'lib joylang!</div>';hydrate($('#fl'))}
-document.querySelectorAll('.nt').forEach(b=>b.onclick=()=>view(b.dataset.v));
-$('#fb').onclick=()=>view('chats');
-let pfile=null;
-$('#pfile').onchange=e=>{const f=e.target.files[0];e.target.value='';if(!f)return;if(apk(f))return alert('.apk fayllarni yuborib bo\'lmaydi');pfile=f;$('#pfn').textContent='📎 '+f.name};
-$('#pp').onclick=async()=>{const b=$('#pt').value.trim();if(!b&&!pfile)return;let file=null;
- if(pfile){try{const key='f'+uid();await fput(key,pfile);file={name:pfile.name,type:pfile.type||'application/octet-stream',size:pfile.size,key}}catch(x){return alert('Faylni saqlab bo\'lmadi')}}
- ls.set('tg_p',[...ls.get('tg_p',[]),{id:uid(),a:me.id,b,file,at:Date.now()}]);$('#pt').value='';pfile=null;$('#pfn').textContent='';renderFeed()};
-$('#fl').onclick=e=>{const l=e.target.closest('[data-l]'),d=e.target.closest('[data-d]');
- if(l){const L=ls.get('tg_l',{}),a=L[l.dataset.l]||[],i=a.indexOf(me.id);i<0?a.push(me.id):a.splice(i,1);L[l.dataset.l]=a;ls.set('tg_l',L)}
- if(d)ls.set('tg_p',ls.get('tg_p',[]).filter(p=>String(p.id)!==d.dataset.d));renderFeed()};
-// botlar (messenger ichidagi botlar; BotFather bot yaratadi)
-const peerUser=id=>uBy(+id.slice(1).split('_').find(x=>+x!==me.id));
-const shrink=(f,px,cb)=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),s=Math.min(1,px/Math.max(im.width,im.height));c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',.85))};im.src=URL.createObjectURL(f)};
-let rec=null,sel=null,ct=null;
-const pins=()=>ls.get('tg_pin',{});
-const started=u=>ls.get('tg_st'+me.id,{})[u.id]||M().some(x=>x.c===peer&&x.f===me.id);
-const setStarted=id=>{const S=ls.get('tg_st'+me.id,{});S[id]=1;ls.set('tg_st'+me.id,S)};
-function push(file,b=''){if(!peer||!info(peer).post)return;if(ls.set('tg_m',[...M(),{id:uid(),c:peer,f:me.id,b,file,at:Date.now()}])){render();if(peer[0]==='d'&&b)botTick(peer,b)}}
-// sarlavha va pastki panel: bot uchun "Boshlash", kanal uchun "Qo'shilish"
-function bar(){const i=info(peer),bs=!!i.u?.bot&&!started(i.u);
- $('#pn').textContent=i.name;$('#pav').innerHTML=i.av;$('#ps').textContent=i.sub;
- const ok=i.post&&!bs;$('#form').classList.toggle('hidden',!ok||!!rec);$('#jb').classList.toggle('hidden',ok);
- $('#jt').textContent=bs?`Botni ishga tushirish uchun bosing`:(i.mem?`Bu kanalda faqat admin yozadi`:`Kanalga obuna bo'ling`);
- $('#jbtn').classList.toggle('hidden',!bs&&i.mem);$('#jbtn').textContent=bs?'▶️ Boshlash':`Qo'shilish`}
-// qadalgan xabarlar
-function renderPin(){const a=(pins()[peer]||[]).map(id=>M().find(m=>m.id===id)).filter(Boolean),p=$('#pin');p.classList.toggle('hidden',!a.length);
- if(a.length){const m=a[a.length-1];p.dataset.id=m.id;p.innerHTML=`📌 <span>${esc(m.b||(m.file?'📎 '+m.file.name:''))}</span><small>${a.length>1?a.length+' ta qadalgan':''}</small>`}}
-$('#pin').onclick=()=>{const n=document.querySelector(`.m[data-id="${$('#pin').dataset.id}"]`);if(n){n.scrollIntoView({behavior:'smooth',block:'center'});n.classList.add('sel');setTimeout(()=>n.classList.remove('sel'),1200)}};
-$('#msgs').onclick=e=>{const m=e.target.closest('.m'),v=e.target.closest('.rv');
- if(v){v.paused?v.play():v.pause();return}
- if(!m||e.target.closest('a,audio,video')||!info(peer).post)return;
- sel=+m.dataset.id;const on=(pins()[peer]||[]).includes(sel);$('#selp').textContent=on?'📌 Qadashni olib tashlash':'📌 Qadash';$('#sel').classList.remove('hidden');
- document.querySelectorAll('.m.sel').forEach(x=>x.classList.remove('sel'));m.classList.add('sel')};
-$('#selx').onclick=()=>{sel=null;$('#sel').classList.add('hidden');document.querySelectorAll('.m.sel').forEach(x=>x.classList.remove('sel'))};
-$('#selp').onclick=()=>{const P=pins(),a=P[peer]||[],i=a.indexOf(sel);i<0?a.push(sel):a.splice(i,1);P[peer]=a;ls.set('tg_pin',P);$('#selx').click();render()};
-// ovozli xabar va dumaloq video
-async function record(kind){if(rec||!peer||!info(peer).post)return;
- try{const s=await navigator.mediaDevices.getUserMedia(kind==='v'?{video:{facingMode:'user',width:480,height:480},audio:true}:{audio:true});
-  const ch=[],mr=new MediaRecorder(s);rec={kind,send:true,t:Date.now()};
-  mr.ondataavailable=e=>e.data.size&&ch.push(e.data);
-  mr.onstop=async()=>{clearInterval(rec.iv);s.getTracks().forEach(t=>t.stop());$('#rbar').classList.add('hidden');$('#rpv').classList.add('hidden');const r=rec;rec=null;bar();if(!r.send||!ch.length)return;
-   const type=(mr.mimeType||'').split(';')[0]||(kind==='v'?'video/webm':'audio/webm'),b=new Blob(ch,{type}),key='f'+uid();
-   try{await fput(key,b)}catch(x){return alert(`Saqlab bo'lmadi`)}
-   push({name:(kind==='v'?'dumaloq-video':'ovoz')+'.webm',type,size:b.size,key,rec:kind})};
-  rec.stop=send=>{rec.send=send;mr.state!=='inactive'&&mr.stop()};
-  if(kind==='v'){const v=$('#rpv');v.srcObject=s;v.classList.remove('hidden');v.play().catch(()=>0)}
-  $('#form').classList.add('hidden');$('#rbar').classList.remove('hidden');$('#rt').textContent='0:00';
-  const lim=kind==='v'?60:600;rec.iv=setInterval(()=>{const n=Math.floor((Date.now()-rec.t)/1000);$('#rt').textContent=Math.floor(n/60)+':'+String(n%60).padStart(2,'0');if(n>=lim)rec.stop(true)},300);
-  mr.start()}catch(e){alert(`Mikrofon/kamera ruxsati berilmadi yoki brauzer qo'llamaydi`)}}
-$('#ra').onclick=()=>record('a');$('#rv').onclick=()=>record('v');$('#rx').onclick=()=>rec&&rec.stop(false);$('#rs').onclick=()=>rec&&rec.stop(true);
-// bot kodi: ajratilgan (sandbox) iframe ichida ishlaydi, saqlash/kukilarga kira olmaydi
-function runBot(code,ctx){return new Promise(res=>{const f=document.createElement('iframe');f.sandbox='allow-scripts';f.style.display='none';let done=0;
- const fin=o=>{if(done)return;done=1;removeEventListener('message',h);f.remove();res(o)};
- const h=e=>{if(e.source===f.contentWindow)fin(e.data)};addEventListener('message',h);
- f.srcdoc='<script>addEventListener("message",async e=>{const {code,ctx}=e.data,H={},out=[];let T=null;try{new Function("on","onText","reply","ctx",code)((c,fn)=>{H[c.toLowerCase()]=fn},fn=>{T=fn},t=>out.push(String(t)),ctx);const fn=H[ctx.cmd]||(ctx.cmd[0]!=="/"?T:null);if(fn)await fn(ctx.cmd[0]==="/"?ctx:ctx.text,ctx);parent.postMessage({out,hit:!!fn},"*")}catch(x){parent.postMessage({err:String(x)},"*")}});<\/script>';
- f.onload=()=>f.contentWindow.postMessage({code,ctx},'*');document.body.appendChild(f);setTimeout(()=>fin({err:'⏱ Kod 5 soniyada javob bermadi'}),5000)})}
-// guruh / kanal / bot ma'lumotlari (rasm, nom, buyruqlar, kod)
-function openCi(){const i=info(peer);if(i.t==='d'&&!i.u)return;
- const d=i.t==='d',o=d?i.u:i.c,own=d?o.owner===me.id:o.o===me.id;ct={o,d};
- $('#cav').innerHTML=i.av;$('#cname').value=o.name;$('#cname').disabled=!own;$('#cpl').classList.toggle('hidden',!own);$('#csv').classList.toggle('hidden',!own);$('#cinfo').textContent=i.sub;$('#cbot').classList.toggle('hidden',!(d&&own));
- if(d&&own){$('#ctok').textContent=o.token;$('#bcode').value=o.code||'';$('#bcode').placeholder='// Namuna:\non("/start", c => reply("Salom, " + c.name + "!"));\non("/hi", () => reply("Assalomu alaykum"));\nonText(t => reply("Siz yozdingiz: " + t));';cmdList()}
- const cb=$('#cadd');cb.classList.toggle('hidden',!(d&&i.u&&i.u.id!==1&&i.u.id!==me.id));if(d&&i.u)cb.textContent=isCt(i.u.id)?'➖ Kontaktdan olib tashlash':`➕ Kontaktga qo'shish`;
- $('#ci').classList.remove('hidden')}
-function updObj(p){if(ct.d){const us=U(),k=us.findIndex(u=>u.id===ct.o.id);us[k]={...us[k],...p};ls.set('tg_u',us);ct.o=us[k]}else{const cs=C(),k=cs.findIndex(c=>c.id===ct.o.id);cs[k]={...cs[k],...p};ls.set('tg_c',cs);ct.o=cs[k]}render()}
-function cmdList(){const c=ct.o.cmds||{};$('#bcl').innerHTML=Object.keys(c).map(k=>`<div class="ck"><code>${esc(k)}</code> → <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(c[k])}</span><button data-x="${esc(k)}">🗑</button></div>`).join('')}
-$('#pav').onclick=$('#pn').onclick=openCi;$('#cx').onclick=()=>$('#ci').classList.add('hidden');
-$('#cpic').onchange=e=>{const f=e.target.files[0];e.target.value='';f&&shrink(f,256,d=>{updObj({avatar:d});$('#cav').innerHTML=`<img src="${d}" alt="">`})};
-$('#csv').onclick=()=>{const n=$('#cname').value.trim();if(n){updObj({name:n});$('#ci').classList.add('hidden')}};
-$('#bca').onclick=()=>{let k=$('#bc1').value.trim().toLowerCase();const v=$('#bc2').value.trim();if(!k||!v)return alert('Buyruq va javobni kiriting');if(k[0]!=='/')k='/'+k;updObj({cmds:{...(ct.o.cmds||{}),[k]:v}});$('#bc1').value=$('#bc2').value='';cmdList()};
-$('#bcl').onclick=e=>{const b=e.target.closest('[data-x]');if(!b)return;const c={...ct.o.cmds};delete c[b.dataset.x];updObj({cmds:c});cmdList()};
-// kontaktlar va username orqali xabarlashish
-const cts=()=>ls.get('tg_ct'+me.id,[]),isCt=id=>id===1||cts().includes(id);
-function ctList(){$('#ctl').innerHTML=cts().map(uBy).filter(Boolean).map(u=>`<div class="ck"><div class="av" style="width:36px;height:36px;font-size:.9rem;margin:0">${avHtml(u)}</div><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(u.name)} <small style="color:var(--mu)">${u.username?'@'+esc(u.username):esc(u.email)}</small></span><button data-m="${u.id}">💬</button><button data-d="${u.id}">🗑</button></div>`).join('')||`<div class="empty">Kontaktlar yo'q. @username yoki email bilan qo'shing.</div>`}
-function addCt(s){s=s.trim().replace(/^@/,'').toLowerCase();if(!s)return;const u=U().find(x=>x.id!==me.id&&((x.username||'').toLowerCase()===s||x.email===s));
- if(!u)return alert('Foydalanuvchi topilmadi');if(isCt(u.id))return alert('Allaqachon kontaktlarda');ls.set('tg_ct'+me.id,[...cts(),u.id]);ctList();render()}
-$('#ctb').onclick=()=>{$('#ct').classList.remove('hidden');$('#cti').value='';ctList()};$('#ctx').onclick=()=>$('#ct').classList.add('hidden');
-$('#cta').onclick=()=>{addCt($('#cti').value);$('#cti').value=''};$('#cti').onkeydown=e=>e.key==='Enter'&&$('#cta').click();
-$('#ctl').onclick=e=>{const m=e.target.closest('[data-m]'),d=e.target.closest('[data-d]');
- if(m){$('#ct').classList.add('hidden');open(dmId(me.id,+m.dataset.m))}
- if(d){ls.set('tg_ct'+me.id,cts().filter(x=>x!==+d.dataset.d));ctList();render()}};
-$('#cadd').onclick=()=>{const id=ct.o.id,c=cts();ls.set('tg_ct'+me.id,c.includes(id)?c.filter(x=>x!==id):[...c,id]);$('#ci').classList.add('hidden');render()};
-$('#q').onkeydown=e=>{if(e.key!=='Enter')return;const v=q.replace(/^@/,''),u=v&&U().find(x=>x.id!==me.id&&(x.username||'').toLowerCase()===v);if(u){$('#q').value='';q='';open(dmId(u.id,me.id))}};
-$('#bcs').onclick=()=>{updObj({code:$('#bcode').value});alert(`Kod saqlandi. Foydalanuvchi Boshlash bosganda yoki yozganda shu kod ishlaydi.`)};
-function say(bot,c,b){setTimeout(()=>{ls.set('tg_m',[...M(),{id:uid(),c,f:bot,b,file:null,at:Date.now()}]);render()},350)}
-async function botTick(c,t){const u=peerUser(c);if(!u?.bot||!t)return;if(u.id===1)return bf(c,t);
- const k=t.split(/\s+/)[0].toLowerCase();
- if(u.code){const r=await runBot(u.code,{cmd:k,text:t,name:me.name,id:me.id});
-  if(r.err)return say(u.id,c,'⚠️ Bot kodi xatosi: '+r.err);
-  if(r.hit&&r.out&&r.out.length)return r.out.forEach(x=>say(u.id,c,x))}
- const cm=u.cmds||{},ks=Object.keys(cm).filter(x=>x!=='/*').join(' ');
- say(u.id,c,cm[k]||(k==='/start'?`Salom! Men ${u.name} botiman.`+(ks?'\nBuyruqlar: '+ks:''):cm['/*']||'Tushunmadim. '+(ks?'Buyruqlar: '+ks:'Egasi hali buyruq qo\'shmagan.')))}
-function bf(c,t){const K='tg_bf'+me.id,S=ls.get(K,{}),r=x=>say(1,c,x),a=t.split(/\s+/),cmd=a[0].toLowerCase(),bots=()=>U().filter(u=>u.bot&&u.owner===me.id),
- own=n=>bots().find(b=>b.username.toLowerCase()===(n||'').replace('@','').toLowerCase());
- if(cmd==='/cancel'){ls.set(K,{});return r('Bekor qilindi.')}
- if(S.st==='name'&&cmd[0]!=='/'){ls.set(K,{st:'user',name:t});return r('Yaxshi. Endi bot uchun username tanlang. U "bot" bilan tugashi kerak, masalan: UZ_news_bot')}
- if(S.st==='user'&&cmd[0]!=='/'){const un=t.replace('@','');
-  if(!/^[A-Za-z0-9_]{3,29}bot$/i.test(un))return r('Username "bot" bilan tugashi va faqat lotin harf, raqam, _ bo\'lishi kerak. Qayta kiriting.');
-  if(U().some(u=>(u.username||'').toLowerCase()===un.toLowerCase()))return r('Bu username band. Boshqasini kiriting.');
-  const id=uid(),tok=id+':'+[...crypto.getRandomValues(new Uint8Array(18))].map(x=>(x%36).toString(36)).join('');
-  ls.set('tg_u',[...U(),{id,name:S.name,email:'@'+un,username:un,bot:true,owner:me.id,token:tok,avatar:null,cmds:{}}]);ls.set(K,{});
-  return r(`✅ Bot yaratildi: @${un}\nToken: ${tok}\n\nBuyruq qo'shish: /setcmd ${un} /salom Assalomu alaykum!\nBotni kontaktlardan topib yozing.\n(Bu messenger ichidagi bot, haqiqiy Telegram Bot API tokeni emas.)`)}
- if(cmd==='/newbot'){ls.set(K,{st:'name'});return r('Yangi bot yaratamiz. Botga nom bering:')}
- if(cmd==='/mybots')return r(bots().map(b=>'@'+b.username).join('\n')||'Sizda bot yo\'q. /newbot');
- if(cmd==='/token'){const b=own(a[1]);return r(b?b.token:'Bot topilmadi. Namuna: /token mybot')}
- if(cmd==='/setcmd'){const b=own(a[1]),k=(a[2]||'').toLowerCase(),v=a.slice(3).join(' ');
-  if(!b||k[0]!=='/'||!v)return r('Namuna: /setcmd mybot /salom Assalomu alaykum!\nStandart javob: /setcmd mybot /* Javob matni');
-  const us=U(),i=us.findIndex(u=>u.id===b.id);us[i].cmds={...us[i].cmds,[k]:v};ls.set('tg_u',us);return r('✅ '+k+' qo\'shildi')}
- if(cmd==='/delbot'){const b=own(a[1]);if(!b)return r('Bot topilmadi. Namuna: /delbot mybot');ls.set('tg_u',U().filter(u=>u.id!==b.id));return r('🗑 O\'chirildi')}
- r('Men BotFather, bot yaratuvchiman.\n/newbot: yangi bot\n/mybots: botlarim\n/setcmd: buyruq qo\'shish\n/token: tokenni ko\'rish\n/delbot: botni o\'chirish\n/cancel: bekor qilish')}
-if(!U().some(u=>u.id===1))ls.set('tg_u',[{id:1,name:'BotFather',email:'@BotFather',username:'BotFather',bot:true,avatar:null,cmds:{}},...U()]);
+/* ==========================================================
+   UZ Messenger — frontend + Vercel serverless API (bitta fayl)
+   Backend: /api/* — pastdagi "API ROUTER" bo'limida
+   ========================================================== */
 
-// ---------- AUTH ----------
-const err=t=>$('#err').textContent=t||'';
-function step(n,t,s,ph,type='text'){flow.n=n;const bx=document.querySelector('.box');bx.classList.remove('sw');void bx.offsetWidth;bx.classList.add('sw');$('#t').textContent=t;$('#s').textContent=s;const f=$('#f');f.value='';f.type=type;f.placeholder=ph;f.focus();err();$('#re').classList.toggle('hidden',n!=='code')}
-const toEmail=()=>step('email','Messenger','Email manzilingizni kiriting, tasdiqlash kodi yuboramiz','Email','email');
-function toast(h){const t=$('#toast');t.innerHTML=h;t.classList.remove('hidden');clearTimeout(toast.i);toast.i=setTimeout(()=>t.classList.add('hidden'),30000)}
-function sendCode(){flow.code=String(crypto.getRandomValues(new Uint32Array(1))[0]%900000+100000);flow.exp=Date.now()+3e5;flow.tries=0;
- toast('📩 <small>Demo: server yo\'q, shuning uchun email yuborilmaydi</small><br>'+esc(flow.email)+' uchun kod: <b>'+flow.code+'</b>')}
-$('#go').onclick=async()=>{
- const v=$('#f').value.trim(),n=flow.n;err();
- if(!(window.crypto&&crypto.subtle))return err('Sahifa HTTPS orqali ochilishi kerak');
- if(n==='email'){
-  if(!/^\S+@\S+\.\S+$/.test(v))return err('Email noto\'g\'ri');
-  flow.email=v.toLowerCase();sendCode();step('code','Kodni kiriting',flow.email+' manziliga 6 xonali kod yuborildi','000000');
- }else if(n==='code'){
-  if(Date.now()>flow.exp)return err('Kod muddati tugadi, qayta yuboring');
-  if(++flow.tries>5){toEmail();return err('Juda ko\'p urinish. Qaytadan boshlang')}
-  if(v!==flow.code)return err('Kod noto\'g\'ri');
-  flow.code=null;const u=U().find(x=>x.email===flow.email);
-  if(!u)return step('name','Ismingiz','Profil uchun ism kiriting','Ism');
-  if(u.tfa){flow.u=u;flow.f=0;return step('2fa','Ikki bosqichli himoya','2FA parolingizni kiriting','Parol','password')}
-  login(u);
- }else if(n==='name'){
-  if(!v)return err('Ism kiriting');
-  flow.name=v;return step('uname','Username tanlang',`Boshqalar sizni @username orqali topadi. Ixtiyoriy: bo'sh qoldirsangiz, keyin profildan qo'shasiz`,'username');
- }else if(n==='uname'){
-  const un=v.replace(/^@/,'');
-  if(un&&!/^[A-Za-z][A-Za-z0-9_]{2,31}$/.test(un))return err(`Lotin harf bilan boshlanib, 3-32 belgi (harf, raqam, _) bo'lsin`);
-  if(un&&U().some(x=>(x.username||'').toLowerCase()===un.toLowerCase()))return err('Bu username band');
-  const u={id:uid(),name:flow.name,email:flow.email,username:un||null,avatar:null,tfa:null,salt:crypto.randomUUID()};
-  ls.set('tg_u',[...U(),u]);login(u);
- }else if(n==='2fa'){
-  if(await kdf(v,flow.u.salt)===flow.u.tfa)return login(flow.u);
-  if(++flow.f>=5){toEmail();return err('Juda ko\'p urinish. Qaytadan boshlang')}
-  err('Parol xato ('+flow.f+'/5)');
- }};
-$('#f').addEventListener('keydown',e=>e.key==='Enter'&&$('#go').click());
-$('#re').onclick=()=>{sendCode();err()};
-function login(u){me=u;ls.set('tg_s',u.id);$('#auth').classList.add('hidden');$('#app').classList.remove('hidden');$('#toast').classList.add('hidden');flow={};render()}
+const $ = s => document.querySelector(s);
+const ls = {
+  get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch(e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return 1; } catch(e) { alert('Xotira to\'ldi.'); return 0; } }
+};
 
-// ---------- CHAT DATA ----------
-function info(id){
- if(id[0]==='d'){const o=+id.slice(1).split('_').find(x=>+x!==me.id),u=uBy(o);return{t:'d',name:(u?.bot?'🤖 ':'')+(u?.name||'?'),av:u?avHtml(u):'?',sub:u?(u.bot?u.email:(u.username?'@'+u.username+' · ':'')+u.email):'',mem:1,post:1,u}}
- const c=C().find(x=>x.id===id)||{m:[]},ch=c.t==='ch',mem=c.m.includes(me.id);
- return{t:c.t,c,name:c.name||'?',av:c.avatar?`<img src="${c.avatar}" alt="">`:(ch?'📢':'👥'),sub:c.m.length+(ch?' obunachi':' a\'zo'),mem,post:mem&&(!ch||c.o===me.id)}}
-const myIds=()=>{const g=C().filter(c=>c.m.includes(me.id)).map(c=>c.id);
- const d=M().filter(x=>x.c[0]==='d'&&x.c.slice(1).split('_').map(Number).includes(me.id)).map(x=>x.c);return[...new Set([...g,...d])]};
-function render(){if(peer){markRead();renderMsgs();bar();renderPin()}renderList()}
-const markRead=()=>{const r=ls.get('tg_r'+me.id,{});r[peer]=Date.now();ls.set('tg_r'+me.id,r)};
-function renderList(){
- const by={};M().forEach(x=>(by[x.c]??=[]).push(x));const rd=ls.get('tg_r'+me.id,{});
- const ids=myIds();if(peer&&!ids.includes(peer))ids.push(peer);
- const hit=s=>!q||s.toLowerCase().includes(q);
- const rows=ids.map(id=>{const i=info(id),a=by[id]||[];return{id,i,l:a.slice(-1)[0],un:a.filter(x=>x.f!==me.id&&x.at>(rd[id]||0)).length}})
-  .filter(r=>hit(r.i.name)).sort((a,b)=>(b.l?.at||0)-(a.l?.at||0));
- const L=$('#list');L.innerHTML='';
- const row=(id,av,name,pv,time,un)=>{const d=document.createElement('div');d.className='row'+(peer===id?' on':'');
-  d.innerHTML=`<div class="av">${av}</div><div class="info"><div class="nm"><span>${esc(name)}</span><small>${time}</small></div><div class="pv"><span>${pv}</span>${un?`<b class="un">${un}</b>`:''}</div></div>`;
-  d.onclick=()=>open(id);L.appendChild(d)};
- rows.forEach(({id,i,l,un})=>row(id,i.av,i.name,l?(l.f===me.id?'Siz: ':'')+(l.file?'📎 '+esc(l.file.name):esc(l.b)):esc(i.sub),l?tm(l.at):'',un));
- const hd=t=>L.insertAdjacentHTML('beforeend',`<div class="hdr">${t}</div>`);
- const ch=C().filter(c=>c.t==='ch'&&!c.m.includes(me.id)&&hit(c.name));
- if(ch.length){hd('Kanallar');ch.forEach(c=>row(c.id,c.avatar?`<img src="${c.avatar}" alt="">`:'📢',c.name,c.m.length+' obunachi','',0))}
- const un=u=>u.username?'@'+u.username:u.email,hitU=u=>hit(u.name+u.email+(u.username?'@'+u.username:'')),
-  rest=U().filter(u=>u.id!==me.id&&!ids.includes(dmId(u.id,me.id))&&hitU(u)),
-  cs=rest.filter(u=>isCt(u.id)),gl=q?rest.filter(u=>!isCt(u.id)&&(u.username||'').toLowerCase().includes(q.replace(/^@/,''))):[],
-  urow=u=>row(dmId(u.id,me.id),avHtml(u),(u.bot?'🤖 ':'')+u.name,esc(un(u)),'',0);
- if(cs.length){hd('Kontaktlar');cs.forEach(urow)}
- if(gl.length){hd('Global qidiruv (@username)');gl.forEach(urow)}
- if(!L.children.length)L.innerHTML='<div class="empty">Hech narsa topilmadi.<br>Kishini topish uchun qidiruvga @username yozing yoki 👤 Kontaktlar orqali qo\'shing.</div>'}
-function open(id){peer=id;att=null;view('chats');$('#sel').classList.add('hidden');const cc=$('#chat');cc.style.animation='none';void cc.offsetWidth;cc.style.animation='';$('#att').classList.add('hidden');$('#app').classList.add('in-chat');$('#ph').classList.add('hidden');$('#chat').classList.remove('hidden');
- const i=info(id);$('#pn').textContent=i.name;$('#ps').textContent=i.sub;$('#pav').innerHTML=i.av;render();$('#msg').focus()}
+const U = () => ls.get('tg_u', []);
+const M = () => ls.get('tg_m', []);
+const C = () => ls.get('tg_c', []);
+const uid = () => Date.now() * 1000 + Math.floor(Math.random() * 1000);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const kdf = async (p, s) => {
+  const k = await crypto.subtle.importKey('raw', new TextEncoder().encode(p), 'PBKDF2', false, ['deriveBits']);
+  const b = await crypto.subtle.deriveBits({ name:'PBKDF2', salt:new TextEncoder().encode(s), iterations:150000, hash:'SHA-256' }, k, 256);
+  return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2,'0')).join('');
+};
 
-const onlyEmoji=s=>/^(\p{Extended_Pictographic}|\p{Emoji_Modifier}|\u200d|\ufe0f|\s){1,6}$/u.test(s);
-function renderMsgs(){
- const E=$('#msgs'),i=info(peer);let last='',h='';
- M().filter(x=>x.c===peer).forEach(m=>{const d=dayOf(m.at);if(d!==last){last=d;h+=`<div class="day">${d}</div>`}
-  const mine=m.f===me.id,u=uBy(m.f),f=m.file?fileHtml(m.file):'';
-  h+=`<div class="m ${mine?'me':'th'}" data-id="${m.id}">${(pins()[peer]||[]).includes(m.id)?'<small class="pm">📌</small>':''}${!mine&&i.t==='g'&&u?`<b class="sn">${esc(u.name)}</b>`:''}${f}${m.b?`<span class="${onlyEmoji(m.b)&&!m.file?'big':''}">${esc(m.b)}</span>`:''}<i>${tm(m.at)}</i></div>`});
- E.innerHTML=h||'<div class="empty" style="margin:auto">Hozircha xabar yo\'q 👋</div>';hydrate(E);E.scrollTop=E.scrollHeight}
-$('#form').onsubmit=async e=>{e.preventDefault();const b=$('#msg').value.trim();if((!b&&!att)||!peer||!info(peer).post)return;
- let file=null;if(att){try{const key='f'+uid();await fput(key,att.file);file={name:att.name,type:att.type,size:att.size,key}}catch(x){return alert('Faylni saqlab bo\'lmadi (qurilma xotirasi to\'lgan bo\'lishi mumkin)')}}
- if(ls.set('tg_m',[...M(),{id:uid(),c:peer,f:me.id,b,file,at:Date.now()}])){$('#msg').value='';att=null;$('#att').classList.add('hidden');render();if(peer[0]==='d')botTick(peer,b)}};
-$('#file').onchange=e=>{const f=e.target.files[0];e.target.value='';if(!f)return;
- if(apk(f))return alert('.apk fayllarni yuborib bo\'lmaydi');
- att={file:f,name:f.name,type:f.type||'application/octet-stream',size:f.size};$('#an').textContent='📎 '+f.name+' ('+sz(f.size)+')';$('#att').classList.remove('hidden')};
-$('#ax').onclick=()=>{att=null;$('#att').classList.add('hidden')};
-$('#jbtn').onclick=()=>{const i=info(peer);if(i.u?.bot){setStarted(i.u.id);push(null,'/start');return}
- const cs=C();cs.find(c=>c.id===peer).m.push(me.id);ls.set('tg_c',cs);render()};
-$('#back').onclick=()=>{peer=null;$('#app').classList.remove('in-chat');$('#chat').classList.add('hidden');$('#ph').classList.remove('hidden');renderList()};
-$('#q').oninput=e=>{q=e.target.value.trim().toLowerCase();renderList()};
-// emoji (kursor joyiga qo'shiladi)
-$('#emo').innerHTML=EMO.map(e=>`<button type="button">${e}</button>`).join('');
-$('#emo').onclick=e=>{if(e.target.tagName==='BUTTON'){const i=$('#msg');i.focus();i.setRangeText(e.target.textContent,i.selectionStart,i.selectionEnd,'end')}};
-$('#eb').onclick=()=>$('#emo').classList.toggle('hidden');
+const EMO = '😀 😁 😂 🤣 😊 😍 😘 😎 🤔 😢 😭 😡 👍 👎 👏 🙏 💪 🔥 ❤️ 💔 🎉 ✨ 🌹 🎁 ☕ 🍕 ⚽ 🚀 🌍 😴 🤝 👋 😱 🥰 😇 🙄 😅 🤗 🤩 😜 🫡 🥳 😏 🤯 😬 🙌 💯 ✅ ❌ ⭐ 🌙 ☀️ 🐱 🐶 🍉 🎵'.split(' ');
 
-// ---------- YANGI GURUH / KANAL ----------
-function nwUi(){$('#nmem').innerHTML=$('#nt').value==='g'?U().filter(u=>u.id!==me.id&&!u.bot).map(u=>`<label class="ck"><input type="checkbox" value="${u.id}"> ${esc(u.name)} <small style="color:var(--mu)">${esc(u.email)}</small></label>`).join('')||'<div class="empty">Boshqa foydalanuvchilar yo\'q</div>':''}
-$('#new').onclick=()=>{$('#nname').value='';$('#nw').classList.remove('hidden');nwUi()};
-$('#nt').onchange=nwUi;$('#nx').onclick=()=>$('#nw').classList.add('hidden');
-$('#mk').onclick=()=>{if($('#nt').value==='bot'){$('#nw').classList.add('hidden');setStarted(1);open(dmId(me.id,1));return bf(dmId(me.id,1),'/newbot')}const n=$('#nname').value.trim();if(!n)return alert('Nom kiriting');
- const t=$('#nt').value,m=[me.id,...[...$('#nmem').querySelectorAll('input:checked')].map(x=>+x.value)];
- const c={id:'g'+uid(),t,name:n,o:me.id,m};ls.set('tg_c',[...C(),c]);$('#nw').classList.add('hidden');open(c.id)};
+let me = null, peer = null, flow = {}, q = '', att = null, pfile = null, sel = null;
+const uBy = id => U().find(u => u.id === id);
+const sz = n => n > 1048576 ? (n/1048576).toFixed(1)+' MB' : Math.ceil(n/1024)+' KB';
+const tm = t => new Date(t).toLocaleTimeString('uz-UZ', { hour:'2-digit', minute:'2-digit' });
+const dayOf = t => new Date(t).toLocaleDateString('uz-UZ', { day:'numeric', month:'long' });
+const avHtml = u => u.avatar ? `<img src="${u.avatar}" alt="">` : esc((u.name||'?')[0].toUpperCase());
+const dmId = (a,b) => `d${Math.min(a,b)}_${Math.max(a,b)}`;
+const apk = f => /\.apk$/i.test(f.name) || f.type === 'application/vnd.android.package-archive';
 
-// ---------- PROFIL / 2FA ----------
-function tfaUi(){$('#tfs').textContent=me.tfa?'🔒 2FA yoqilgan':'🔓 2FA o\'chiq. Qo\'shimcha parol bilan himoyalang';
- $('#tf').textContent=me.tfa?'2FA ni o\'chirish':'2FA ni yoqish';$('#p1').placeholder=me.tfa?'Joriy 2FA parol':'Yangi 2FA parol (kamida 6 belgi)';$('#p1').value=''}
-$('#menu').onclick=()=>{$('#ov').classList.remove('hidden');$('#mav').innerHTML=avHtml(me);$('#nn').value=me.name;$('#un').value=me.username||'';tfaUi()};
-$('#x').onclick=()=>$('#ov').classList.add('hidden');
-function upd(p){const us=U(),i=us.findIndex(u=>u.id===me.id);us[i]={...us[i],...p};ls.set('tg_u',us);me=us[i];render()}
-$('#sv').onclick=()=>{const n=$('#nn').value.trim(),un=$('#un').value.trim().replace(/^@/,'');if(!n)return;
- if(un&&!/^[A-Za-z][A-Za-z0-9_]{2,31}$/.test(un))return alert(`Username lotin harf bilan boshlanib, 3-32 ta harf, raqam yoki _ dan iborat bo'lsin`);
- if(un&&U().some(u=>u.id!==me.id&&(u.username||'').toLowerCase()===un.toLowerCase()))return alert('Bu username band');
- upd({name:n,username:un||null});$('#ov').classList.add('hidden')};
-$('#pic').onchange=e=>{const f=e.target.files[0];if(!f)return;const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),s=Math.min(1,256/Math.max(im.width,im.height));c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);upd({avatar:c.toDataURL('image/jpeg',.85)});$('#mav').innerHTML=avHtml(me)};im.src=URL.createObjectURL(f)};
-$('#tf').onclick=async()=>{const p=$('#p1').value;
- if(me.tfa){if(await kdf(p,me.salt)!==me.tfa)return alert('Parol xato');upd({tfa:null})}
- else{if(p.length<6)return alert('Parol kamida 6 belgi bo\'lsin');upd({tfa:await kdf(p,me.salt)})}
- tfaUi()};
-$('#lo').onclick=()=>{try{localStorage.removeItem('tg_s')}catch(e){}location.reload()};
-addEventListener('storage',()=>me&&render());
-(()=>{const id=ls.get('tg_s',null),u=id&&uBy(id);u?login(u):toEmail()})();
+/* ---------- IndexedDB (fayllar) ---------- */
+const idb = new Promise(r => { try { const q = indexedDB.open('tgf', 1); q.onupgradeneeded = () => q.result.createObjectStore('f'); q.onsuccess = () => r(q.result); q.onerror = () => r(null); } catch(e) { r(null); } });
+const fput = async (k,b) => { const d = await idb; if (!d) throw 0; return new Promise((ok,no) => { const t = d.transaction('f','readwrite'); t.objectStore('f').put(b,k); t.oncomplete = ok; t.onerror = no; }); };
+const fget = async k => { const d = await idb; return d ? new Promise(ok => { const r = d.transaction('f').objectStore('f').get(k); r.onsuccess = () => ok(r.result); r.onerror = () => ok(null); }) : null; };
+const urls = {};
+const furl = async k => { if (urls[k]) return urls[k]; const b = await fget(k); return b ? (urls[k] = URL.createObjectURL(b)) : ''; };
+
+const fileHtml = f => {
+  const t = f.type || '', n = esc(f.name);
+  const card = a => `<a class="fc" ${a} download="${n}">📎<span>${n}<br><small>${sz(f.size)}</small></span></a>`;
+  if (f.data) return t.startsWith('image/') ? `<img src="${f.data}" alt="">` : card(`href="${f.data}"`);
+  const k = `data-k="${esc(f.key)}"`;
+  if (t.startsWith('image/')) return `<img ${k} alt="">`;
+  if (t.startsWith('video/')) return `<video controls ${k}></video>`;
+  if (t.startsWith('audio/')) return `<audio controls ${k}></audio>`;
+  return card(k);
+};
+const hydrate = el => el.querySelectorAll('[data-k]').forEach(async n => { const u = await furl(n.dataset.k); if (u) n[n.tagName==='A'?'href':'src'] = u; });
+
+/* ==========================================================
+   API — server bilan aloqa (Vercel serverless)
+   ========================================================== */
+const API = {
+  async request(path, opts) {
+    try {
+      const r = await fetch(path, opts);
+      if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(j.error || 'HTTP ' + r.status); }
+      return await r.json();
+    } catch(e) {
+      console.warn('API xatosi:', path, e.message);
+      return null;
+    }
+  },
+  users(q) { return this.request('/api/users' + (q ? '?q=' + encodeURIComponent(q) : '')); },
+  findByUsername(un) { return this.request('/api/users?username=' + encodeURIComponent(un)); },
+  register(data) { return this.request('/api/register', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) }); },
+  login(email) { return this.request('/api/login?email=' + encodeURIComponent(email)); },
+  messages(chat) { return this.request('/api/messages' + (chat ? '?chat=' + encodeURIComponent(chat) : '')); },
+  sendMsg(m) { return this.request('/api/messages', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(m) }); },
+  chats() { return this.request('/api/chats'); },
+  createChat(c) { return this.request('/api/chats', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(c) }); },
+  joinChat(id, userId) { return this.request('/api/chats', { method:'PATCH', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ id, userId }) }); },
+  posts() { return this.request('/api/posts'); },
+  createPost(p) { return this.request('/api/posts', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(p) }); },
+  deletePost(id) { return this.request('/api/posts?id=' + encodeURIComponent(id), { method:'DELETE' }); },
+  updateUser(u) { return this.request('/api/users', { method:'PATCH', headers:{'Content-Type':'application/json'}, body: JSON.stringify(u) }); }
+};
+
+async function syncFromServer() {
+  const [users, msgs, chats, posts] = await Promise.all([API.users(), API.messages(), API.chats(), API.posts()]);
+  if (users?.users) ls.set('tg_u', users.users);
+  if (msgs?.messages) ls.set('tg_m', msgs.messages);
+  if (chats?.chats) ls.set('tg_c', chats.chats);
+  if (posts?.posts) ls.set('tg_p', posts.posts);
+}
+
+/* ==========================================================
+   AUTH
+   ========================================================== */
+const err = t => $('#err').textContent = t || '';
+function step(n, t, s, ph, type = 'text') {
+  flow.n = n;
+  $('#t').textContent = t; $('#s').textContent = s;
+  const f = $('#f'); f.value = ''; f.type = type; f.placeholder = ph; f.focus(); err();
+  $('#re').classList.toggle('hidden', n !== 'code');
+}
+const toEmail = () => step('email', 'Messenger', 'Email manzilingizni kiriting, tasdiqlash kodi yuboramiz', 'Email', 'email');
+function toast(h) { const t = $('#toast'); t.innerHTML = h; t.classList.remove('hidden'); clearTimeout(toast.i); toast.i = setTimeout(() => t.classList.add('hidden'), 30000); }
+function sendCode() {
+  flow.code = String(crypto.getRandomValues(new Uint32Array(1))[0] % 900000 + 100000);
+  flow.exp = Date.now() + 3e5; flow.tries = 0;
+  toast('📩 <small>Demo: server yo\'q, kod shu yerda</small><br>' + esc(flow.email) + ' uchun kod: <b>' + flow.code + '</b>');
+}
+
+$('#go').onclick = async () => {
+  const v = $('#f').value.trim(), n = flow.n;
+  err();
+  if (!(window.crypto && crypto.subtle)) return err('Sahifa HTTPS orqali ochilishi kerak');
+
+  if (n === 'email') {
+    if (!/^\S+@\S+\.\S+$/.test(v)) return err('Email noto\'g\'ri');
+    flow.email = v.toLowerCase();
+    sendCode();
+    step('code', 'Kodni kiriting', flow.email + ' manziliga 6 xonali kod yuborildi', '000000');
+
+  } else if (n === 'code') {
+    if (Date.now() > flow.exp) return err('Kod muddati tugadi, qayta yuboring');
+    if (++flow.tries > 5) { toEmail(); return err('Juda ko\'p urinish. Qaytadan boshlang'); }
+    if (v !== flow.code) return err('Kod noto\'g\'ri');
+    flow.code = null;
+
+    let u = null;
+    try { const r = await API.login(flow.email); u = r?.user; } catch(e) {}
+    if (!u) u = U().find(x => x.email === flow.email);
+    if (u && !U().some(x => x.id === u.id)) ls.set('tg_u', [...U(), u]);
+    if (u) { if (u.tfa) { flow.u = u; flow.f = 0; return step('2fa', 'Ikki bosqichli himoya', '2FA parolingizni kiriting', 'Parol', 'password'); } return login(u); }
+    return step('name', 'Ismingiz', 'Profil uchun ism kiriting', 'Ism');
+
+  } else if (n === 'name') {
+    if (!v) return err('Ism kiriting');
+    flow.name = v;
+    return step('uname', 'Username tanlang', 'Boshqalar sizni @username orqali topadi. Ixtiyoriy', 'username');
+
+  } else if (n === 'uname') {
+    const un = v.replace(/^@/, '');
+    if (un && !/^[A-Za-z][A-Za-z0-9_]{2,31}$/.test(un)) return err('Lotin harf bilan boshlanib, 3-32 belgi bo\'lsin');
+    const r = await API.register({ name: flow.name, email: flow.email, username: un || null, salt: crypto.randomUUID() });
+    if (!r) return err('Serverga ulanib bo\'lmadi. Qayta urinib ko\'ring.');
+    if (r.error) return err(r.error);
+    const u = r.user;
+    ls.set('tg_u', [...U().filter(x => x.id !== u.id), u]);
+    await syncFromServer();
+    return login(u);
+
+  } else if (n === '2fa') {
+    if (await kdf(v, flow.u.salt) === flow.u.tfa) return login(flow.u);
+    if (++flow.f >= 5) { toEmail(); return err('Juda ko\'p urinish. Qaytadan boshlang'); }
+    err('Parol xato (' + flow.f + '/5)');
+  }
+};
+$('#f').addEventListener('keydown', e => e.key === 'Enter' && $('#go').click());
+$('#re').onclick = () => { sendCode(); err(); };
+
+function login(u) {
+  me = u; ls.set('tg_s', u.id);
+  $('#auth').classList.add('hidden'); $('#app').classList.remove('hidden'); $('#toast').classList.add('hidden');
+  flow = {}; render();
+}
+
+/* ==========================================================
+   CHAT MA'LUMOTLARI
+   ========================================================== */
+function info(id) {
+  if (id[0] === 'd') {
+    const o = +id.slice(1).split('_').find(x => +x !== me.id), u = uBy(o);
+    return { t:'d', name:(u?.bot?'🤖 ':'') + (u?.name || '?'), av:u?avHtml(u):'?', sub:u?(u.bot?u.email:(u.username?'@'+u.username+' · ':'')+u.email):'', mem:1, post:1, u };
+  }
+  const c = C().find(x => x.id === id) || { m:[] }, ch = c.t === 'ch', mem = c.m.includes(me.id);
+  return { t:c.t, c, name:c.name || '?', av:c.avatar?`<img src="${c.avatar}" alt="">`:(ch?'📢':'👥'), sub:c.m.length + (ch?' obunachi':' a\'zo'), mem, post:mem && (!ch || c.o === me.id) };
+}
+const myIds = () => {
+  const g = C().filter(c => c.m.includes(me.id)).map(c => c.id);
+  const d = M().filter(x => x.c[0] === 'd' && x.c.slice(1).split('_').map(Number).includes(me.id)).map(x => x.c);
+  return [...new Set([...g, ...d])];
+};
+const markRead = () => { const r = ls.get('tg_r'+me.id, {}); r[peer] = Date.now(); ls.set('tg_r'+me.id, r); };
+function render() {
+  if (peer) { markRead(); renderMsgs(); bar(); renderPin(); }
+  renderList();
+}
+
+function renderList() {
+  const by = {}; M().forEach(x => (by[x.c] ??= []).push(x));
+  const rd = ls.get('tg_r'+me.id, {});
+  const ids = myIds(); if (peer && !ids.includes(peer)) ids.push(peer);
+  const hit = s => !q || s.toLowerCase().includes(q);
+  const rows = ids.map(id => {
+    const i = info(id), a = by[id] || [];
+    return { id, i, l:a.slice(-1)[0], un:a.filter(x => x.f !== me.id && x.at > (rd[id] || 0)).length };
+  }).filter(r => hit(r.i.name)).sort((a,b) => (b.l?.at || 0) - (a.l?.at || 0));
+
+  const L = $('#list'); L.innerHTML = '';
+  const row = (id, av, name, pv, time, un) => {
+    const d = document.createElement('div');
+    d.className = 'row' + (peer === id ? ' on' : '');
+    d.innerHTML = `<div class="av">${av}</div><div class="info"><div class="nm"><span>${esc(name)}</span><small>${time}</small></div><div class="pv"><span>${pv}</span>${un?`<b class="un">${un}</b>`:''}</div></div>`;
+    d.onclick = () => open(id);
+    L.appendChild(d);
+  };
+  rows.forEach(({ id, i, l, un }) => row(id, i.av, i.name, l?(l.f === me.id?'Siz: ':'') + (l.file?'📎 '+esc(l.file.name):esc(l.b)):esc(i.sub), l?tm(l.at):'', un));
+
+  const hd = t => L.insertAdjacentHTML('beforeend', `<div class="hdr">${t}</div>`);
+  const ch = C().filter(c => c.t === 'ch' && !c.m.includes(me.id) && hit(c.name));
+  if (ch.length) { hd('Kanallar'); ch.forEach(c => row(c.id, c.avatar?`<img src="${c.avatar}" alt="">`:'📢', c.name, c.m.length+' obunachi', '', 0)); }
+
+  const un = u => u.username ? '@' + u.username : u.email;
+  const hitU = u => hit(u.name + u.email + (u.username ? '@' + u.username : ''));
+  const rest = U().filter(u => u.id !== me.id && !ids.includes(dmId(u.id, me.id)) && hitU(u));
+  const cs = rest.filter(u => isCt(u.id));
+  const gl = q ? rest.filter(u => !isCt(u.id) && (u.username || '').toLowerCase().includes(q.replace(/^@/, ''))) : [];
+  const urow = u => row(dmId(u.id, me.id), avHtml(u), (u.bot?'🤖 ':'') + u.name, esc(un(u)), '', 0);
+  if (cs.length) { hd('Kontaktlar'); cs.forEach(urow); }
+  if (gl.length) { hd('Global qidiruv'); gl.forEach(urow); }
+  if (!L.children.length) L.innerHTML = '<div class="empty">Hech narsa topilmadi.<br>Qidiruvga @username yozing yoki 👤 Kontaktlar orqali qo\'shing.</div>';
+}
+
+function open(id) {
+  peer = id; att = null; view('chats');
+  $('#sel').classList.add('hidden');
+  $('#att').classList.add('hidden');
+  $('#app').classList.add('in-chat');
+  $('#ph').classList.add('hidden'); $('#chat').classList.remove('hidden');
+  const i = info(id);
+  $('#pn').textContent = i.name; $('#ps').textContent = i.sub; $('#pav').innerHTML = i.av;
+  render(); $('#msg').focus();
+}
+
+function view(v) {
+  $('#app').classList.toggle('feed', v === 'feed');
+  $('#feed').classList.toggle('hidden', v !== 'feed');
+  $('#chat').classList.toggle('hidden', v === 'feed' || !peer);
+  $('#ph').classList.toggle('hidden', v === 'feed' || !!peer);
+  document.querySelectorAll('.nt').forEach(b => b.classList.toggle('on', b.dataset.v === v));
+  if (v === 'feed') renderFeed();
+}
+document.querySelectorAll('.nt').forEach(b => b.onclick = () => view(b.dataset.v));
+$('#fb').onclick = () => view('chats');
+
+/* ---------- Postlar ---------- */
+function renderFeed() {
+  const L = ls.get('tg_l', {});
+  $('#fl').innerHTML = [...ls.get('tg_p', [])].reverse().map(p => {
+    const u = uBy(p.a) || { name:'?' }, l = L[p.id] || [], y = l.includes(me.id);
+    return `<div class="pc"><div class="ph2"><div class="av">${avHtml(u)}</div><div><b>${esc(u.name)}</b><small>${dayOf(p.at)} ${tm(p.at)}</small></div></div>${p.b?`<div class="pb">${esc(p.b)}</div>`:''}${p.file?fileHtml(p.file):''}<div class="pa"><button data-l="${p.id}">${y?'❤️':'🤍'} ${l.length}</button>${p.a===me.id?`<button data-d="${p.id}">🗑</button>`:''}</div></div>`;
+  }).join('') || '<div class="empty">Postlar yo\'q. Birinchi bo\'lib joylang!</div>';
+  hydrate($('#fl'));
+}
+$('#pfile').onchange = e => { const f = e.target.files[0]; e.target.value = ''; if (!f) return; if (apk(f)) return alert('.apk yuborib bo\'lmaydi'); pfile = f; $('#pfn').textContent = '📎 ' + f.name; };
+$('#pp').onclick = async () => {
+  const b = $('#pt').value.trim(); if (!b && !pfile) return;
+  let file = null;
+  if (pfile) { try { const key = 'f' + uid(); await fput(key, pfile); file = { name:pfile.name, type:pfile.type || 'application/octet-stream', size:pfile.size, key }; } catch(x) { return alert('Faylni saqlab bo\'lmadi'); } }
+  const post = { id: uid(), a: me.id, b, file, at: Date.now() };
+  ls.set('tg_p', [...ls.get('tg_p', []), post]);
+  API.createPost(post);
+  $('#pt').value = ''; pfile = null; $('#pfn').textContent = ''; renderFeed();
+};
+$('#fl').onclick = e => {
+  const l = e.target.closest('[data-l]'), d = e.target.closest('[data-d]');
+  if (l) { const L = ls.get('tg_l', {}), a = L[l.dataset.l] || [], i = a.indexOf(me.id); i < 0 ? a.push(me.id) : a.splice(i,1); L[l.dataset.l] = a; ls.set('tg_l', L); }
+  if (d) { ls.set('tg_p', ls.get('tg_p', []).filter(p => String(p.id) !== d.dataset.d)); API.deletePost(d.dataset.d); }
+  renderFeed();
+};
+
+/* ==========================================================
+   KONTAKTLAR — asosiy tuzatilgan joy
+   ========================================================== */
+const cts = () => ls.get('tg_ct' + me.id, []);
+const isCt = id => id === 1 || cts().includes(id);
+
+function ctList() {
+  $('#ctl').innerHTML = cts().map(uBy).filter(Boolean).map(u =>
+    `<div class="ck"><div class="av" style="width:36px;height:36px;font-size:.9rem;margin:0">${avHtml(u)}</div><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(u.name)} <small style="color:var(--mu)">${u.username?'@'+esc(u.username):esc(u.email)}</small></span><button data-m="${u.id}">💬</button><button data-d="${u.id}">🗑</button></div>`
+  ).join('') || '<div class="empty">Kontaktlar yo\'q. @username yoki email bilan qo\'shing.</div>';
+}
+
+async function addCt(s) {
+  s = s.trim().replace(/^@/, '').toLowerCase();
+  if (!s) return;
+  // serverdan qidirish
+  let found = null;
+  try {
+    const r = await fetch('/api/users?q=' + encodeURIComponent(s));
+    const j = await r.json();
+    const list = j.users || [];
+    found = list.find(x => (x.username || '').toLowerCase() === s || (x.email || '').toLowerCase() === s);
+  } catch(e) { console.warn(e); }
+  // lokal keshdan zaxira
+  if (!found) found = U().find(x => x.id !== me.id && ((x.username||'').toLowerCase() === s || (x.email||'').toLowerCase() === s));
+  if (!found) return alert('Foydalanuvchi topilmadi. U ro\'yxatdan o\'tganini tekshiring.');
+  if (found.id === me.id) return alert('O\'zingizni qo\'shib bo\'lmaydi');
+  if (isCt(found.id)) return alert('Allaqachon kontaktlarda');
+  ls.set('tg_ct' + me.id, [...cts(), found.id]);
+  if (!U().some(u => u.id === found.id)) ls.set('tg_u', [...U(), found]);
+  ctList(); render();
+}
+
+$('#ctb').onclick = () => { $('#ct').classList.remove('hidden'); $('#cti').value = ''; ctList(); };
+$('#ctx').onclick = () => $('#ct').classList.add('hidden');
+$('#cta').onclick = async () => { await addCt($('#cti').value); $('#cti').value = ''; };
+$('#cti').addEventListener('keydown', async e => { if (e.key === 'Enter') { e.preventDefault(); await addCt($('#cti').value); $('#cti').value = ''; } });
+
+$('#ctl').onclick = e => {
+  const m = e.target.closest('[data-m]'), d = e.target.closest('[data-d]');
+  if (m) { $('#ct').classList.add('hidden'); open(dmId(me.id, +m.dataset.m)); }
+  if (d) { ls.set('tg_ct'+me.id, cts().filter(x => x !== +d.dataset.d)); ctList(); render(); }
+};
+
+/* ---------- Qidiruv (Enter) — serverdan ---------- */
+$('#q').addEventListener('keydown', async e => {
+  if (e.key !== 'Enter') return;
+  const v = $('#q').value.replace(/^@/, '').trim();
+  if (!v) return;
+  let u = null;
+  try {
+    const r = await fetch('/api/users?q=' + encodeURIComponent(v));
+    const j = await r.json();
+    const list = j.users || [];
+    u = list.find(x => (x.username || '').toLowerCase() === v.toLowerCase()) ||
+        list.find(x => (x.email || '').toLowerCase() === v.toLowerCase());
+  } catch(err) {}
+  if (!u) u = U().find(x => x.id !== me.id && ((x.username||'').toLowerCase() === v.toLowerCase() || (x.email||'').toLowerCase() === v.toLowerCase()));
+  if (u) {
+    if (!U().some(x => x.id === u.id)) ls.set('tg_u', [...U(), u]);
+    $('#q').value = ''; q = '';
+    open(dmId(u.id, me.id));
+  } else {
+    alert('Bunday foydalanuvchi topilmadi');
+  }
+});
+$('#q').oninput = e => { q = e.target.value.trim().toLowerCase(); renderList(); };
+
+/* ==========================================================
+   XABARLAR
+   ========================================================== */
+const onlyEmoji = s => /^(\p{Extended_Pictographic}|\p{Emoji_Modifier}|\u200d|\ufe0f|\s){1,6}$/u.test(s);
+function renderMsgs() {
+  const E = $('#msgs'), i = info(peer); let last = '', h = '';
+  M().filter(x => x.c === peer).forEach(m => {
+    const d = dayOf(m.at); if (d !== last) { last = d; h += `<div class="day">${d}</div>`; }
+    const mine = m.f === me.id, u = uBy(m.f), f = m.file ? fileHtml(m.file) : '';
+    h += `<div class="m ${mine?'me':'th'}" data-id="${m.id}">${(pins()[peer]||[]).includes(m.id)?'<small class="pm">📌</small>':''}${!mine && i.t === 'g' && u?`<b class="sn">${esc(u.name)}</b>`:''}${f}${m.b?`<span class="${onlyEmoji(m.b) && !m.file?'big':''}">${esc(m.b)}</span>`:''}<i>${tm(m.at)}</i></div>`;
+  });
+  E.innerHTML = h || '<div class="empty" style="margin:auto">Hozircha xabar yo\'q 👋</div>';
+  hydrate(E); E.scrollTop = E.scrollHeight;
+}
+
+$('#form').onsubmit = async e => {
+  e.preventDefault();
+  const b = $('#msg').value.trim();
+  if ((!b && !att) || !peer || !info(peer).post) return;
+  let file = null;
+  if (att) { try { const key = 'f' + uid(); await fput(key, att.file); file = { name:att.name, type:att.type, size:att.size, key }; } catch(x) { return alert('Faylni saqlab bo\'lmadi'); } }
+  const msg = { id: uid(), c: peer, f: me.id, b, file, at: Date.now() };
+  if (ls.set('tg_m', [...M(), msg])) {
+    API.sendMsg(msg);
+    $('#msg').value = ''; att = null; $('#att').classList.add('hidden');
+    render();
+    if (peer[0] === 'd') botTick(peer, b);
+  }
+};
+
+$('#file').onchange = e => {
+  const f = e.target.files[0]; e.target.value = '';
+  if (!f) return;
+  if (apk(f)) return alert('.apk yuborib bo\'lmaydi');
+  att = { file:f, name:f.name, type:f.type || 'application/octet-stream', size:f.size };
+  $('#an').textContent = '📎 ' + f.name + ' (' + sz(f.size) + ')';
+  $('#att').classList.remove('hidden');
+};
+$('#ax').onclick = () => { att = null; $('#att').classList.add('hidden'); };
+$('#jbtn').onclick = async () => {
+  const i = info(peer);
+  if (i.u?.bot) { setStarted(i.u.id); push(null, '/start'); return; }
+  // kanalga qo'shilish — serverga
+  const r = await API.joinChat(peer, me.id);
+  if (r && !r.error) {
+    const cs = C(); const c = cs.find(c => c.id === peer); if (c && !c.m.includes(me.id)) c.m.push(me.id); ls.set('tg_c', cs);
+  }
+  render();
+};
+$('#back').onclick = () => { peer = null; $('#app').classList.remove('in-chat'); $('#chat').classList.add('hidden'); $('#ph').classList.remove('hidden'); renderList(); };
+
+/* ---------- Emoji ---------- */
+$('#emo').innerHTML = EMO.map(e => `<button type="button">${e}</button>`).join('');
+$('#emo').onclick = e => { if (e.target.tagName === 'BUTTON') { const i = $('#msg'); i.focus(); i.setRangeText(e.target.textContent, i.selectionStart, i.selectionEnd, 'end'); } };
+$('#eb').onclick = () => $('#emo').classList.toggle('hidden');
+
+/* ---------- Pin ---------- */
+const pins = () => ls.get('tg_pin', {});
+function renderPin() {
+  const a = (pins()[peer] || []).map(id => M().find(m => m.id === id)).filter(Boolean), p = $('#pin');
+  p.classList.toggle('hidden', !a.length);
+  if (a.length) { const m = a[a.length-1]; p.dataset.id = m.id; p.innerHTML = `📌 <span>${esc(m.b || (m.file?'📎 '+m.file.name:''))}</span><small>${a.length>1?a.length+' ta qadalgan':''}</small>`; }
+}
+$('#pin').onclick = () => { const n = document.querySelector(`.m[data-id="${$('#pin').dataset.id}"]`); if (n) { n.scrollIntoView({ behavior:'smooth', block:'center' }); n.classList.add('sel'); setTimeout(() => n.classList.remove('sel'), 1200); } };
+$('#msgs').onclick = e => {
+  const m = e.target.closest('.m');
+  if (!m || e.target.closest('a,audio,video') || !info(peer).post) return;
+  sel = +m.dataset.id;
+  const on = (pins()[peer] || []).includes(sel);
+  $('#selp').textContent = on ? '📌 Qadashni olib tashlash' : '📌 Qadash';
+  $('#sel').classList.remove('hidden');
+  document.querySelectorAll('.m.sel').forEach(x => x.classList.remove('sel'));
+  m.classList.add('sel');
+};
+$('#selx').onclick = () => { sel = null; $('#sel').classList.add('hidden'); document.querySelectorAll('.m.sel').forEach(x => x.classList.remove('sel')); };
+$('#selp').onclick = () => { const P = pins(), a = P[peer] || [], i = a.indexOf(sel); i < 0 ? a.push(sel) : a.splice(i,1); P[peer] = a; ls.set('tg_pin', P); $('#selx').click(); render(); };
+
+/* ==========================================================
+   BOTLAR
+   ========================================================== */
+function push(file, b = '') {
+  if (!peer || !info(peer).post) return;
+  const msg = { id: uid(), c: peer, f: me.id, b, file, at: Date.now() };
+  if (ls.set('tg_m', [...M(), msg])) {
+    API.sendMsg(msg);
+    render();
+    if (peer[0] === 'd' && b) botTick(peer, b);
+  }
+}
+const pins2 = pins;
+const peerUser = id => uBy(+id.slice(1).split('_').find(x => +x !== me.id));
+const shrink = (f, px, cb) => { const im = new Image(); im.onload = () => { const c = document.createElement('canvas'), s = Math.min(1, px / Math.max(im.width, im.height)); c.width = im.width * s; c.height = im.height * s; c.getContext('2d').drawImage(im, 0, 0, c.width, c.height); cb(c.toDataURL('image/jpeg', .85)); }; im.src = URL.createObjectURL(f); };
+const started = u => ls.get('tg_st' + me.id, {})[u.id] || M().some(x => x.c === peer && x.f === me.id);
+const setStarted = id => { const S = ls.get('tg_st' + me.id, {}); S[id] = 1; ls.set('tg_st' + me.id, S); };
+
+function bar() {
+  const i = info(peer), bs = !!i.u?.bot && !started(i.u);
+  $('#pn').textContent = i.name; $('#pav').innerHTML = i.av; $('#ps').textContent = i.sub;
+  const ok = i.post && !bs;
+  $('#form').classList.toggle('hidden', !ok);
+  $('#jb').classList.toggle('hidden', ok);
+  $('#jt').textContent = bs ? 'Botni ishga tushirish uchun bosing' : (i.mem ? 'Bu kanalda faqat admin yozadi' : 'Kanalga obuna bo\'ling');
+  $('#jbtn').classList.toggle('hidden', !bs && i.mem);
+  $('#jbtn').textContent = bs ? '▶️ Boshlash' : 'Qo\'shilish';
+}
+
+function say(bot, c, b) { setTimeout(() => { const m = { id: uid(), c, f: bot, b, file:null, at: Date.now() }; ls.set('tg_m', [...M(), m]); API.sendMsg(m); render(); }, 350); }
+
+function botTick(c, t) {
+  const u = peerUser(c); if (!u?.bot || !t) return;
+  const k = t.split(/\s+/)[0].toLowerCase();
+  const cm = u.cmds || {}, ks = Object.keys(cm).filter(x => x !== '/*').join(' ');
+  say(u.id, c, cm[k] || (k === '/start' ? `Salom! Men ${u.name} botiman.` + (ks?'\nBuyruqlar: '+ks:'') : cm['/*'] || 'Tushunmadim.'));
+}
+
+/* ==========================================================
+   GURUH / KANAL
+   ========================================================== */
+function nwUi() {
+  $('#nmem').innerHTML = $('#nt').value === 'g' ? U().filter(u => u.id !== me.id && !u.bot).map(u => `<label class="ck"><input type="checkbox" value="${u.id}"> ${esc(u.name)} <small style="color:var(--mu)">${esc(u.email)}</small></label>`).join('') || '<div class="empty">Boshqa foydalanuvchilar yo\'q</div>' : '';
+}
+$('#new').onclick = () => { $('#nname').value = ''; $('#nw').classList.remove('hidden'); nwUi(); };
+$('#nt').onchange = nwUi;
+$('#nx').onclick = () => $('#nw').classList.add('hidden');
+$('#mk').onclick = async () => {
+  const n = $('#nname').value.trim(); if (!n) return alert('Nom kiriting');
+  const t = $('#nt').value, m = [me.id, ...[...$('#nmem').querySelectorAll('input:checked')].map(x => +x.value)];
+  const chat = { id:'g' + uid(), t, name:n, o:me.id, m };
+  const r = await API.createChat(chat);
+  ls.set('tg_c', [...C(), r?.chat || chat]);
+  $('#nw').classList.add('hidden'); open(chat.id);
+};
+
+/* ==========================================================
+   PROFIL
+   ========================================================== */
+function tfaUi() {
+  $('#tfs').textContent = me.tfa ? '🔒 2FA yoqilgan' : '🔓 2FA o\'chiq';
+  $('#tf').textContent = me.tfa ? '2FA ni o\'chirish' : '2FA ni yoqish';
+  $('#p1').placeholder = me.tfa ? 'Joriy 2FA parol' : 'Yangi 2FA parol (kamida 6 belgi)';
+  $('#p1').value = '';
+}
+$('#menu').onclick = () => { $('#ov').classList.remove('hidden'); $('#mav').innerHTML = avHtml(me); $('#nn').value = me.name; $('#un').value = me.username || ''; tfaUi(); };
+$('#x').onclick = () => $('#ov').classList.add('hidden');
+
+async function upd(p) {
+  const us = U(), i = us.findIndex(u => u.id === me.id);
+  us[i] = { ...us[i], ...p }; ls.set('tg_u', us); me = us[i];
+  await API.updateUser({ id: me.id, ...p });
+  render();
+}
+
+$('#sv').onclick = async () => {
+  const n = $('#nn').value.trim(), un = $('#un').value.trim().replace(/^@/, '');
+  if (!n) return;
+  if (un && !/^[A-Za-z][A-Za-z0-9_]{2,31}$/.test(un)) return alert('Username lotin harf bilan boshlanib, 3-32 belgi bo\'lsin');
+  await upd({ name:n, username: un || null });
+  $('#ov').classList.add('hidden');
+};
+$('#pic').onchange = e => {
+  const f = e.target.files[0]; if (!f) return;
+  shrink(f, 256, async d => { await upd({ avatar:d }); $('#mav').innerHTML = avHtml(me); });
+};
+$('#tf').onclick = async () => {
+  const p = $('#p1').value;
+  if (me.tfa) { if (await kdf(p, me.salt) !== me.tfa) return alert('Parol xato'); await upd({ tfa:null }); }
+  else { if (p.length < 6) return alert('Parol kamida 6 belgi'); await upd({ tfa: await kdf(p, me.salt) }); }
+  tfaUi();
+};
+$('#lo').onclick = () => { try { localStorage.removeItem('tg_s'); } catch(e){} location.reload(); };
+
+/* ==========================================================
+   POLLING — yangi xabarlar
+   ========================================================== */
+setInterval(async () => {
+  if (!me) return;
+  try {
+    const r = await API.messages();
+    if (!r?.messages) return;
+    const msgs = r.messages;
+    const local = M();
+    const newOnes = msgs.filter(m => !local.some(x => x.id === m.id));
+    if (newOnes.length) {
+      ls.set('tg_m', msgs);
+      if (peer) render();
+      renderList();
+    }
+  } catch(e) {}
+}, 5000);
+
+/* ==========================================================
+   START
+   ========================================================== */
+(async () => {
+  await syncFromServer();
+  const id = ls.get('tg_s', null), u = id && uBy(id);
+  u ? login(u) : toEmail();
+})();
+
+addEventListener('storage', () => me && render());
 </script>
 </body>
 </html>
