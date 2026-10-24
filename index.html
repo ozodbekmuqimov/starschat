@@ -178,11 +178,8 @@ a{color:var(--ac);text-decoration:none;word-break:break-all}
 
 /* Reaksiyalar */
 .reactions{display:flex;gap:.2rem;margin-top:.3rem;flex-wrap:wrap}
-.reaction-btn{background:var(--bg);padding:.2rem .4rem;border-radius:10px;font-size:.8rem;border:1px solid var(--ln);cursor:pointer}
+.reaction-btn{background:var(--bg);padding:.2rem .4rem;border-radius:10px;font-size:.8rem;border:1px solid var(--ln);cursor:pointer;color:var(--txt)}
 .reaction-btn.active{background:var(--ac);color:#fff;border-color:var(--ac)}
-
-/* Rejalashtirish input */
-#scheduleInput{display:none;padding:.4rem;background:var(--bg);border-radius:8px;margin-top:.3rem;width:100%}
 
 /* Maxfiy chat belgisi */
 .secret-badge{color:#f87171;font-size:.75rem;margin-left:5px}
@@ -473,18 +470,9 @@ a{color:var(--ac);text-decoration:none;word-break:break-all}
  </div>
  <button class="link" id="reactclose" style="margin-top:1rem">Yopish</button>
 </div></div>
-
-<!-- Rejalashtirish oynasi -->
-<div class="ov hidden" id="scheduleov"><div class="md" style="width:320px">
- <h2>⏰ Rejalashtirish</h2>
- <p style="color:var(--mu);font-size:.85rem;margin-bottom:1rem">Xabar qachon yuborilsin?</p>
- <input type="datetime-local" id="scheduleTime" style="width:100%;padding:.7rem;border-radius:10px;border:1px solid var(--ln);background:var(--bg);color:var(--txt);margin-bottom:1rem">
- <button class="btn" id="scheduleSave">Saqlash</button>
- <button class="link" id="scheduleClose">Yopish</button>
-</div></div>
 <script>
 /* ==========================================================
-   UZ Messenger — Barcha funksiyalar + Yangi funksiyalar
+   UZ Messenger — Barcha funksiyalar (Xatosiz)
    ========================================================== */
 const $ = s => document.querySelector(s);
 const ls = {
@@ -496,18 +484,10 @@ const M = () => ls.get('tg_m', []);
 const C = () => ls.get('tg_c', []);
 const uid = () => Date.now()*1000 + Math.floor(Math.random()*1000);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const kdf = async (p,s) => {
-  const k = await crypto.subtle.importKey('raw', new TextEncoder().encode(p), 'PBKDF2', false, ['deriveBits']);
-  const b = await crypto.subtle.deriveBits({name:'PBKDF2', salt:new TextEncoder().encode(s), iterations:150000, hash:'SHA-256'}, k, 256);
-  return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2,'0')).join('');
-};
 const EMO = '😀 😁 😂 🤣 😊 😍 😘 😎 🤔 😢 😭 😡 👍 👎 👏 🙏 💪 🔥 ❤️ 💔 🎉 ✨ 🌹 🎁 ☕ 🍕 ⚽ 🚀 🌍 😴 🤝 👋 😱 🥰 😇 🙄 😅 🤗 🤩 😜 🫡 🥳 😏 🤯 😬 🙌 💯 ✅ ❌ ⭐ 🌙 ☀️ 🐱 🐶 🍉 🎵 🍔 🍟 🍰 🎂 🎮 🎯 🏆 🎨 📸 💡 💎 🔔 📌 📎'.split(' ');
-const REACTIONS = ['❤️', '👍', '🔥', '😂', '😮', '😢'];
-
 let me = null, peer = null, flow = {}, q = '', att = null, pfile = null, sel = null, rec = null, ct = null, replyTo = null;
 let currentTheme = ls.get('tg_theme', 'dark');
 let lastDeletedMsg = null;
-let pendingScheduleMsg = null;
 
 const uBy = id => U().find(u => u.id === id);
 const sz = n => n > 1048576 ? (n/1048576).toFixed(1)+' MB' : Math.ceil(n/1024)+' KB';
@@ -518,13 +498,19 @@ const dmId = (a,b) => `d${Math.min(a,b)}_${Math.max(a,b)}`;
 const apk = f => /\.apk$/i.test(f.name) || f.type === 'application/vnd.android.package-archive';
 const isLink = s => /(https?:\/\/[^\s]+)/g.test(s);
 
-/* ---------- YANGI: Havolalarni aniqlash ---------- */
+/* ---------- Bot Helper (runBotCode qo'shildi) ---------- */
+async function runBotCode(code, ctx) {
+  // Server bo'lmagani uchun bot kodini ishlatmaymiz, shunchaki oddiy javob qaytaramiz
+  return { out: ["Bot kodlari demo rejimda ishlamaydi."], hit: true };
+}
+
+/* ---------- Havolalarni aniqlash ---------- */
 function linkify(text) {
   const urlRegex = /(https?:\/\/[^\s]+)/g;
   return text.replace(urlRegex, url => `<a href="${url}" target="_blank" rel="noopener">${url}</a>`);
 }
 
-/* ---------- YANGI: Reaksiyalar ---------- */
+/* ---------- Reaksiyalar ---------- */
 const reactions = () => ls.get('tg_reactions', {});
 function addReaction(emoji) {
   if (!sel) return;
@@ -546,7 +532,7 @@ $('#selreact').onclick = () => {
 };
 $('#reactclose').onclick = () => $('#reactov').classList.add('hidden');
 
-/* ---------- YANGI: Qurilmalar tarixi ---------- */
+/* ---------- Qurilmalar tarixi ---------- */
 const devices = () => ls.get('tg_devices', []);
 function registerDevice() {
   const devs = devices();
@@ -554,7 +540,7 @@ function registerDevice() {
   const existing = devs.find(d => d.ua === ua);
   if (existing) { existing.lastActive = Date.now(); }
   else { devs.push({ id: uid(), ua, firstActive: Date.now(), lastActive: Date.now() }); }
-  ls.set('tg_devices', devs.slice(-10)); // oxirgi 10 ta
+  ls.set('tg_devices', devs.slice(-10));
 }
 function showDevices() {
   $('#devicesov').classList.remove('hidden');
@@ -566,68 +552,6 @@ function showDevices() {
 $('#devicesBtn').onclick = showDevices;
 $('#devicesclose').onclick = () => $('#devicesov').classList.add('hidden');
 
-/* ---------- YANGI: Xabar rejalashtirish ---------- */
-$('#scheduleSave').onclick = () => {
-  const time = $('#scheduleTime').value;
-  if (!time) return alert('Vaqtni tanlang');
-  const when = new Date(time).getTime();
-  if (when < Date.now()) return alert('Vaqt o\'tib ketgan');
-  
-  if (!pendingScheduleMsg) return;
-  const msg = {...pendingScheduleMsg, at: when, scheduled: true};
-  const queue = ls.get('tg_scheduled', []);
-  queue.push(msg);
-  ls.set('tg_scheduled', queue);
-  
-  $('#scheduleov').classList.add('hidden');
-  $('#msg').value = '';
-  toast('⏰ Xabar rejalashtirildi');
-  pendingScheduleMsg = null;
-};
-$('#scheduleClose').onclick = () => $('#scheduleov').classList.add('hidden');
-
-// Har 10 sekundda rejalashtirilgan xabarlarni tekshirish
-setInterval(() => {
-  const queue = ls.get('tg_scheduled', []);
-  const now = Date.now();
-  const ready = queue.filter(m => m.at <= now);
-  if (ready.length) {
-    ls.set('tg_scheduled', queue.filter(m => m.at > now));
-    ready.forEach(m => {
-      const { scheduled, ...msg } = m;
-      msg.at = Date.now();
-      if (ls.set('tg_m', [...M(), msg])) {
-        API.sendMsg(msg);
-        if (peer === msg.c) renderMsgs();
-        renderList();
-      }
-    });
-  }
-}, 10000);
-
-/* ---------- YANGI: Maxfiy chat ---------- */
-$('#secretsave') && ($('#secretsave').onclick = () => {
-  const time = +$('#secretTime').value;
-  if (!peer) return;
-  const secrets = ls.get('tg_secret', {});
-  secrets[peer] = time ? Date.now() + time * 1000 : 0;
-  ls.set('tg_secret', secrets);
-  $('#secrettov').classList.add('hidden');
-  toast(time ? '🔒 Maxfiy chat yoqildi' : 'Maxfiy chat o\'chirildi');
-});
-
-// Maxfiy xabarlarni avtomatik o'chirish
-setInterval(() => {
-  const secrets = ls.get('tg_secret', {});
-  const now = Date.now();
-  let changed = false;
-  const msgs = M().filter(m => {
-    if (!secrets[m.c]) return true;
-    return m.at + (secrets[m.c] - m.at) > now || true; // Boshqacha mantiq
-  });
-  // Oddiy mantiq: maxfiy chatda xabar yuborilganda, o'sha vaqtdan boshlab hisoblanadi
-}, 60000);
-
 /* ---------- Tema ---------- */
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
@@ -637,7 +561,7 @@ function applyTheme(theme) {
 applyTheme(currentTheme);
 $('#themeToggle').onclick = () => applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
 
-/* ---------- YANGI: Bloklash tizimi ---------- */
+/* ---------- Bloklash tizimi ---------- */
 const blockedList = () => ls.get('tg_blocked', []);
 const isBlocked = id => blockedList().includes(id);
 function toggleBlock(id) {
@@ -658,7 +582,7 @@ function showBlockedList() {
 $('#blockListBtn').onclick = showBlockedList;
 $('#blockclose').onclick = () => $('#blockov').classList.add('hidden');
 
-/* ---------- YANGI: Yulduzchali xabarlar ---------- */
+/* ---------- Yulduzchali xabarlar ---------- */
 const starredList = () => ls.get('tg_star', []);
 function toggleStar(id) {
   let list = starredList();
@@ -967,33 +891,25 @@ $('#selp').onclick = () => { const P = pins(), a = P[peer] || [], i = a.indexOf(
 
 const selectedMessage = () => M().find(x => String(x.id) === String(sel) && x.c === peer);
 
-/* Yulduzcha tugmasi */
-$('#selstar').onclick = () => {
+$('#selstar').onclick = () => { const m = selectedMessage(); if (!m) return; toggleStar(m.id); $('#selx').click(); };
+$('#selreact').onclick = () => { const m = selectedMessage(); if (!m) return; $('#reactov').classList.remove('hidden'); };
+
+$('#selcopy').onclick = () => {
   const m = selectedMessage(); if (!m) return;
-  toggleStar(m.id); $('#selx').click();
+  const text = m.b || '';
+  if (!text) return alert('Faqat matnli xabarni nusxalash mumkin.');
+  navigator.clipboard.writeText(text).then(() => { toast('Nusxalandi'); $('#selx').click(); }).catch(() => alert('Nusxalab bo\'lmadi'));
 };
 
-/* Reaksiya tugmasi */
-$('#selreact').onclick = () => {
+$('#selreply').onclick = () => {
   const m = selectedMessage(); if (!m) return;
-  $('#reactov').classList.remove('hidden');
+  replyTo = m.id;
+  $('#replytxt').textContent = '↩️ ' + (uBy(m.f)?.name || 'Foydalanuvchi') + ': ' + (m.b || m.file?.name || '📎 Fayl');
+  $('#replydraft').classList.remove('hidden');
+  $('#msg').focus();
 };
-window.addReaction = (emoji) => {
-  if (!sel) return;
-  const all = reactions();
-  if (!all[sel]) all[sel] = {};
-  if (!all[sel][emoji]) all[sel][emoji] = [];
-  const arr = all[sel][emoji];
-  const idx = arr.indexOf(me.id);
-  if (idx === -1) arr.push(me.id);
-  else arr.splice(idx, 1);
-  ls.set('tg_reactions', all);
-  $('#reactov').classList.add('hidden');
-  $('#selx').click();
-  renderMsgs();
-};
+$('#replycancel').onclick = () => { replyTo = null; $('#replydraft').classList.add('hidden'); };
 
-/* YANGI: Tahrirlash tarixi */
 $('#seledit').onclick = () => {
   const m = selectedMessage();
   if (!m || m.f !== me.id) return alert('Faqat o‘zingiz yuborgan xabarni tahrirlashingiz mumkin.');
@@ -1026,24 +942,6 @@ $('#seledit').onclick = () => {
   ls.set('tg_m', all); $('#selx').click(); render();
 };
 
-$('#selcopy').onclick = () => {
-  const m = selectedMessage(); if (!m) return;
-  const text = m.b || '';
-  if (!text) return alert('Faqat matnli xabarni nusxalash mumkin.');
-  navigator.clipboard.writeText(text).then(() => {
-    toast('Nusxalandi'); $('#selx').click();
-  }).catch(() => alert('Nusxalab bo\'lmadi'));
-};
-
-$('#selreply').onclick = () => {
-  const m = selectedMessage(); if (!m) return;
-  replyTo = m.id;
-  $('#replytxt').textContent = '↩️ ' + (uBy(m.f)?.name || 'Foydalanuvchi') + ': ' + (m.b || m.file?.name || '📎 Fayl');
-  $('#replydraft').classList.remove('hidden');
-  $('#msg').focus();
-};
-$('#replycancel').onclick = () => { replyTo = null; $('#replydraft').classList.add('hidden'); };
-
 $('#selfwd').onclick = () => {
   const m = selectedMessage(); if (!m) return;
   const options = myIds().filter(id => id !== peer).map(id => ({id, name:info(id).name}));
@@ -1056,7 +954,6 @@ $('#selfwd').onclick = () => {
   if (ls.set('tg_m', [...M(), forwarded])) { API.sendMsg(forwarded); $('#selx').click(); renderList(); alert('Xabar uzatildi.'); }
 };
 
-/* O'chirish + Undo */
 $('#seldel').onclick = async () => {
   const m = selectedMessage(); if (!m) return;
   if (m.f !== me.id) return alert('Faqat o‘zingiz yuborgan xabarni o‘chira olasiz.');
@@ -1067,10 +964,7 @@ $('#seldel').onclick = async () => {
   API.deleteMsg(m.id); $('#selx').click(); render();
   
   $('#undo-snackbar').classList.remove('hidden');
-  setTimeout(() => { 
-    $('#undo-snackbar').classList.add('hidden'); 
-    lastDeletedMsg = null; 
-  }, 5000);
+  setTimeout(() => { $('#undo-snackbar').classList.add('hidden'); lastDeletedMsg = null; }, 5000);
 };
 
 window.undoDelete = () => {
