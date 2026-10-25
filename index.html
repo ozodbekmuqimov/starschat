@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0e1621">
 <title>UZ Messenger</title>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <style>
 /* ===== THEME ===== */
@@ -763,18 +762,6 @@ a{color:var(--ac);text-decoration:none;word-break:break-all}
 
 <script>
 'use strict';
-/* ==================== SUPABASE SOZLAMASI ==================== */
-/* 
-  MUHIM: Quyidagi 2 qatorni o'zingizning Supabase loyihangiz bilan almashtiring!
-  Supabase Dashboard → Settings → API dan oling.
-*/
-const SUPABASE_URL = 'https://SIZNING_LOYIHANGIZ.supabase.co';
-const SUPABASE_ANON_KEY = 'SIZNING_ANON_KALITINGIZ';
-
-const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-let realtimeChannel = null;
-let presenceChannel = null;
-
 /* ==================== HELPERS ==================== */
 const $ = (s, p = document) => p.querySelector(s);
 const $$ = (s, p = document) => [...p.querySelectorAll(s)];
@@ -794,7 +781,7 @@ const ls = {
   remove(k) { try { localStorage.removeItem(k); } catch (e) {} }
 };
 
-/* Mahalliy kesh (faqat UI uchun, asosiy manba — Supabase) */
+/* Mahalliy xotira */
 const U = () => ls.get('tg_u', []) || [];
 const M = () => ls.get('tg_m', []) || [];
 const C = () => ls.get('tg_c', []) || [];
@@ -866,113 +853,34 @@ function toast(html, ms = 4000) {
   toastTimer = setTimeout(() => t.classList.add('hidden'), ms);
 }
 
-/* ==================== SUPABASE: USER OPS ==================== */
-async function sbFindUser(username) {
+/* ==================== MAHALLIY: USER / FAYL ==================== */
+async function findUser(username) {
   const un = normUsername(username);
   if (!un) return null;
-  const { data, error } = await sb
-    .from('users')
-    .select('*')
-    .eq('username', un)
-    .maybeSingle();
-  if (error) { console.warn('sbFindUser:', error); return null; }
-  return data;
+  return U().find(u => u.username === un || u.id === un) || null;
 }
 
-async function sbSearchUsers(query, limit = 20) {
-  const q = normUsername(query);
-  if (!q) return [];
-  const { data, error } = await sb
-    .from('users')
-    .select('*')
-    .ilike('username', `%${q}%`)
-    .limit(limit);
-  if (error) { console.warn('sbSearchUsers:', error); return []; }
-  return data || [];
+async function searchUsers(query, limit = 20) {
+  const k = normUsername(query);
+  if (!k) return [];
+  return U().filter(u => (u.username || u.id || '').includes(k)).slice(0, limit);
 }
 
-async function sbUpsertUser(user) {
-  const { data, error } = await sb
-    .from('users')
-    .upsert(user, { onConflict: 'username' })
-    .select()
-    .single();
-  if (error) { console.error('sbUpsertUser:', error); return null; }
-  return data;
+async function upsertUser(user) {
+  const old = U().find(u => u.id === user.username) || {};
+  const saved = { ...old, ...user, id: user.username };
+  ls.set('tg_u', [...U().filter(u => u.id !== user.username), saved]);
+  return saved;
 }
 
-/* ==================== SUPABASE: MESSAGE OPS ==================== */
-async function sbFetchMessages(chatId, limit = 100) {
-  const { data, error } = await sb
-    .from('messages')
-    .select('*')
-    .eq('chat_id', chatId)
-    .order('created_at', { ascending: true })
-    .limit(limit);
-  if (error) { console.warn('sbFetchMessages:', error); return []; }
-  return (data || []).map(sbMsgToLocal);
-}
-
-async function sbSendMessage(msg) {
-  const row = {
-    chat_id: msg.c,
-    sender_id: String(msg.from),
-    sender_name: uBy(msg.from)?.name || me.name,
-    type: msg.type,
-    text: msg.text || '',
-    file_url: msg.fileUrl || null,
-    file_name: msg.fileName || null,
-    file_size: msg.fileSize || null,
-    sticker: msg.sticker || null,
-    reply_to: msg.replyTo ? String(msg.replyTo) : null,
-    reactions: msg.reactions || []
-  };
-  const { data, error } = await sb.from('messages').insert(row).select().single();
-  if (error) { console.error('sbSendMessage:', error); return null; }
-  return sbMsgToLocal(data);
-}
-
-async function sbUpdateMessage(sbId, updates) {
-  const { error } = await sb.from('messages').update(updates).eq('id', sbId);
-  if (error) console.warn('sbUpdateMessage:', error);
-}
-
-async function sbDeleteMessage(sbId) {
-  const { error } = await sb.from('messages').delete().eq('id', sbId);
-  if (error) console.warn('sbDeleteMessage:', error);
-}
-
-/* Supabase formatidan mahalliy formatga */
-function sbMsgToLocal(row) {
-  return {
-    sbId: row.id,
-    id: row.id, // endi ID Supabase UUID
-    c: row.chat_id,
-    from: row.sender_id,
-    fromName: row.sender_name,
-    at: new Date(row.created_at).getTime(),
-    type: row.type,
-    text: row.text || '',
-    fileUrl: row.file_url,
-    fileName: row.file_name,
-    fileSize: row.file_size,
-    sticker: row.sticker,
-    replyTo: row.reply_to,
-    reactions: row.reactions || [],
-    read: false
-  };
-}
-
-/* ==================== SUPABASE: STORAGE ==================== */
-async function sbUploadFile(file, prefix = 'files') {
-  const ext = (file.name.split('.').pop() || 'bin').toLowerCase();
-  const path = `${prefix}/${Date.now()}_${Math.random().toString(36).slice(2, 8)}.${ext}`;
-  const { data, error } = await sb.storage
-    .from('chat-files')
-    .upload(path, file, { cacheControl: '3600', upsert: false });
-  if (error) { console.error('Upload:', error); return null; }
-  const { data: pub } = sb.storage.from('chat-files').getPublicUrl(path);
-  return pub?.publicUrl || null;
+/* Fayl -> data URL (serversiz saqlash) */
+function uploadFile(file) {
+  return new Promise(resolve => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = () => resolve(null);
+    r.readAsDataURL(file);
+  });
 }
 
 /* ==================== AUTH (username-based) ==================== */
@@ -990,7 +898,7 @@ $('#go').onclick = async () => {
   $('#go').textContent = 'Tekshirilmoqda...';
 
   try {
-    let user = await sbFindUser(un);
+    let user = await findUser(un);
 
     if (!user) {
       // Yangi foydalanuvchi yaratish
@@ -1001,7 +909,7 @@ $('#go').onclick = async () => {
         bio: '',
         created_at: new Date().toISOString()
       };
-      user = await sbUpsertUser(user);
+      user = await upsertUser(user);
       if (!user) throw new Error('Foydalanuvchi yaratib bo\'lmadi');
       toast('✅ Yangi hisob yaratildi: @' + un);
     } else {
@@ -1053,60 +961,16 @@ function saveMe() {
   if (!me) return;
   const others = U().filter(u => u.id !== me.id);
   ls.set('tg_u', [...others, me]);
-  // Supabase'ga ham yozamiz
-  sbUpsertUser({
-    username: me.username,
-    name: me.name,
-    avatar: me.avatar,
-    bio: me.bio,
-    pin: me.pin
-  }).catch(e => console.warn('saveMe:', e));
 }
 
 /* ==================== START APP ==================== */
 function startApp() {
   render();
-  setupPresence();
-}
-
-/* ==================== PRESENCE (onlayn holat) ==================== */
-function setupPresence() {
-  if (presenceChannel) sb.removeChannel(presenceChannel);
-  presenceChannel = sb.channel('online-users', {
-    config: { presence: { key: me.id } }
-  });
-
-  presenceChannel
-    .on('presence', { event: 'sync' }, () => {
-      const state = presenceChannel.presenceState();
-      onlineUsers = new Set(Object.keys(state));
-      renderList();
-      if (peer) updatePeerStatus();
-    })
-    .on('presence', { event: 'join' }, ({ key }) => {
-      onlineUsers.add(key);
-      renderList();
-      if (peer) updatePeerStatus();
-    })
-    .on('presence', { event: 'leave' }, ({ key }) => {
-      onlineUsers.delete(key);
-      renderList();
-      if (peer) updatePeerStatus();
-    })
-    .subscribe(async (status) => {
-      if (status === 'SUBSCRIBED') {
-        await presenceChannel.track({ online_at: new Date().toISOString() });
-      }
-    });
 }
 
 function updatePeerStatus() {
-  if (!peer || peer[0] !== 'd') return;
-  const other = peer.slice(1).split('_').find(x => x !== me.id);
-  const online = onlineUsers.has(other);
-  $('#ps').innerHTML = online
-    ? '<span class="online-dot"></span>onlayn'
-    : '<span class="offline-dot"></span>oflayn';
+  if (!peer) return;
+  $('#ps').textContent = info(peer).sub || '';
 }
 
 /* ==================== INFO ==================== */
@@ -1156,17 +1020,6 @@ async function init() {
     const cached = U().find(u => u.id === sid);
     if (cached) {
       me = cached;
-      // Supabase'dan yangilash
-      try {
-        const fresh = await sbFindUser(cached.username);
-        if (fresh) {
-          me.name = fresh.name;
-          me.avatar = fresh.avatar;
-          me.bio = fresh.bio || '';
-          me.pin = fresh.pin || null;
-        }
-      } catch (e) { console.warn('init refresh:', e); }
-
       $('#auth').classList.add('hidden');
       $('#app').classList.remove('hidden');
 
@@ -1344,22 +1197,9 @@ async function openChat(id, keep) {
 
   renderList();
 
-  // Supabase'dan xabarlarni yuklash
-  try {
-    const sbMsgs = await sbFetchMessages(id, 100);
-    // Mahalliy keshni yangilash (bu chat uchun)
-    const others = M().filter(m => m.c !== id);
-    ls.set('tg_m', [...others, ...sbMsgs]);
-  } catch (e) {
-    console.warn('openChat fetch:', e);
-  }
-
   renderMessages();
   renderPin();
   markAsRead(id);
-
-  // Realtime kanalga qo'shilish
-  joinRealtime(id);
 
   if (!isMobile()) setTimeout(() => $('#msg').focus(), 50);
 }
@@ -1378,83 +1218,6 @@ function markAsRead(chatId) {
     ls.set('tg_m', all);
     renderList();
   }
-}
-
-/* ==================== REALTIME ==================== */
-function joinRealtime(chatId) {
-  // Avvalgi kanaldan chiqish
-  if (realtimeChannel) {
-    sb.removeChannel(realtimeChannel);
-    realtimeChannel = null;
-  }
-
-  realtimeChannel = sb.channel(`chat:${chatId}`, {
-    config: { broadcast: { self: false } }
-  });
-
-  // Yangi xabarlar (Postgres Changes)
-  realtimeChannel
-    .on('postgres_changes',
-      { event: 'INSERT', schema: 'public', table: 'messages', filter: `chat_id=eq.${chatId}` },
-      ({ new: row }) => {
-        const local = sbMsgToLocal(row);
-        const all = M();
-        if (all.find(x => x.id === local.id)) return; // dublikat
-        all.push(local);
-        ls.set('tg_m', all);
-
-        if (peer === chatId) {
-          renderMessages();
-          markAsRead(chatId);
-        }
-        renderList();
-      }
-    )
-    .on('postgres_changes',
-      { event: 'UPDATE', schema: 'public', table: 'messages', filter: `chat_id=eq.${chatId}` },
-      ({ new: row }) => {
-        const local = sbMsgToLocal(row);
-        const all = M();
-        const idx = all.findIndex(x => x.id === local.id);
-        if (idx >= 0) all[idx] = { ...all[idx], ...local };
-        else all.push(local);
-        ls.set('tg_m', all);
-        if (peer === chatId) renderMessages();
-      }
-    )
-    .on('postgres_changes',
-      { event: 'DELETE', schema: 'public', table: 'messages', filter: `chat_id=eq.${chatId}` },
-      ({ old: row }) => {
-        const all = M().filter(x => x.id !== row.id);
-        ls.set('tg_m', all);
-        if (peer === chatId) renderMessages();
-        renderList();
-      }
-    )
-    // Yozmoqda indikatori (Broadcast)
-    .on('broadcast', { event: 'typing' }, ({ payload }) => {
-      if (payload.from === me.id) return;
-      const ind = $('#typing-indicator');
-      if (!ind) return;
-      ind.classList.remove('hidden');
-      clearTimeout(window._typingT);
-      window._typingT = setTimeout(() => ind.classList.add('hidden'), 2500);
-    })
-    // Reaksiyalar yangilanishi
-    .on('broadcast', { event: 'reaction' }, ({ payload }) => {
-      const all = M();
-      const m = all.find(x => x.id === payload.msgId);
-      if (m) {
-        m.reactions = payload.reactions;
-        ls.set('tg_m', all);
-        if (peer === chatId) renderMessages();
-      }
-    })
-    .subscribe((status) => {
-      if (status === 'SUBSCRIBED') {
-        console.log('✅ Realtime:', chatId);
-      }
-    });
 }
 
 /* ==================== RENDER MESSAGES ==================== */
@@ -1604,11 +1367,11 @@ $('#lightbox').addEventListener('click', e => {
   }
 });
 
-/* ==================== SEND MESSAGE (Supabase) ==================== */
+/* ==================== SEND MESSAGE ==================== */
 async function sendMsg(payload) {
   if (!peer || !me) return;
-  const localMsg = {
-    id: 'tmp_' + uid(),
+  const msg = {
+    id: 'm' + uid(),
     c: peer,
     from: me.id,
     fromName: me.name,
@@ -1618,10 +1381,9 @@ async function sendMsg(payload) {
     ...payload
   };
 
-  // Darhol UI'da ko'rsatish (optimistic)
   const all = M();
-  all.push(localMsg);
-  ls.set('tg_m', all);
+  all.push(msg);
+  if (!ls.set('tg_m', all)) return toast("❌ Xotira to'lgan, xabar saqlanmadi");
   renderMessages();
   renderList();
   $('#msg').value = '';
@@ -1632,25 +1394,6 @@ async function sendMsg(payload) {
 
   clearAtt();
   clearReply();
-
-  // Supabase'ga yuborish
-  try {
-    const saved = await sbSendMessage(localMsg);
-    if (saved) {
-      const all2 = M();
-      const idx = all2.findIndex(x => x.id === localMsg.id);
-      if (idx >= 0) all2[idx] = saved;
-      ls.set('tg_m', all2);
-      if (peer === localMsg.c) renderMessages();
-      renderList();
-    }
-  } catch (e) {
-    console.error('sendMsg:', e);
-    toast('❌ Xabar yuborilmadi');
-  }
-
-  // Typing broadcastni to'xtatish
-  clearTimeout(window._typingBroadcastT);
 }
 
 /* ==================== FORM SUBMIT ==================== */
@@ -1664,7 +1407,7 @@ $('#form').onsubmit = async (e) => {
     const f = att;
     toast('📤 Yuklanmoqda...');
     try {
-      const url = await sbUploadFile(f.file, f.type.startsWith('image/') ? 'images' : 'files');
+      const url = await uploadFile(f.file);
       if (!url) throw new Error('Yuklab bo\'lmadi');
       const type = f.type.startsWith('image/') ? 'image' :
         f.type.startsWith('video/') ? 'video' :
@@ -1684,19 +1427,6 @@ $('#form').onsubmit = async (e) => {
     await sendMsg({ type: 'text', text, replyTo });
   }
 };
-
-/* ==================== TYPING BROADCAST ==================== */
-$('#msg').addEventListener('input', () => {
-  if (!peer || !realtimeChannel) return;
-  clearTimeout(window._typingBroadcastT);
-  window._typingBroadcastT = setTimeout(() => {
-    realtimeChannel.send({
-      type: 'broadcast',
-      event: 'typing',
-      payload: { from: me.id, name: me.name }
-    });
-  }, 300);
-});
 
 $('#msg').addEventListener('keydown', e => {
   if (e.key === 'Enter' && !e.shiftKey) {
@@ -1747,11 +1477,6 @@ $('#seldel').onclick = async () => {
   renderMessages();
   renderList();
 
-  // Supabase'dan o'chirish
-  if (!String(m.id).startsWith('tmp_')) {
-    try { await sbDeleteMessage(m.id); } catch (e) { console.warn(e); }
-  }
-
   const sb = $('#undo-snackbar');
   sb.classList.remove('hidden');
   clearTimeout(window._undoT);
@@ -1764,16 +1489,11 @@ $('#undo-btn').onclick = async () => {
   lastDeletedMsg = null;
   $('#undo-snackbar').classList.add('hidden');
 
-  // Qayta yuborish (yangi ID bilan)
   const all = M();
-  all.push({ ...m, id: 'tmp_' + uid(), at: Date.now() });
+  all.push({ ...m, id: 'm' + uid(), at: Date.now() });
   ls.set('tg_m', all);
   renderMessages();
   renderList();
-
-  try {
-    await sbSendMessage({ ...m, c: peer });
-  } catch (e) { console.warn(e); }
 };
 
 $('#selreply').onclick = () => {
@@ -1814,10 +1534,6 @@ $('#seledit').onclick = async () => {
   clearSel();
   renderMessages();
 
-  // Supabase'da yangilash
-  if (!String(m.id).startsWith('tmp_')) {
-    try { await sbUpdateMessage(m.id, { text: nv }); } catch (e) { console.warn(e); }
-  }
 };
 
 $('#selcopy').onclick = () => {
@@ -1865,13 +1581,11 @@ $('#selfwd').onclick = async () => {
 
   const copy = { ...m, c: targets[idx], from: me.id, fromName: me.name, at: Date.now(), read: false };
   const all = M();
-  all.push({ ...copy, id: 'tmp_' + uid() });
+  all.push({ ...copy, id: 'm' + uid() });
   ls.set('tg_m', all);
   toast('➡️ Uzatildi');
   clearSel();
   renderList();
-
-  try { await sbSendMessage(copy); } catch (e) { console.warn(e); }
 };
 
 /* ==================== REACTIONS ==================== */
@@ -1892,19 +1606,6 @@ async function toggleReaction(mid, emoji) {
   ls.set('tg_m', M());
   renderMessages();
 
-  // Broadcast orqali boshqalarga yuborish
-  if (realtimeChannel) {
-    realtimeChannel.send({
-      type: 'broadcast',
-      event: 'reaction',
-      payload: { msgId: mid, reactions: m.reactions }
-    });
-  }
-
-  // Supabase'ga saqlash
-  if (!String(mid).startsWith('tmp_')) {
-    try { await sbUpdateMessage(mid, { reactions: m.reactions }); } catch (e) { console.warn(e); }
-  }
 }
 
 $$('#reactov [data-react]').forEach(b => {
@@ -1981,9 +1682,6 @@ function showCtxMenu(mid, x, y) {
         ls.set('tg_m', all);
         renderMessages();
         renderList();
-        if (!String(mid).startsWith('tmp_')) {
-          try { await sbDeleteMessage(mid); } catch (e) { console.warn(e); }
-        }
         const sb = $('#undo-snackbar');
         sb.classList.remove('hidden');
         clearTimeout(window._undoT);
@@ -2031,7 +1729,7 @@ $('#ra').onclick = async () => {
       toast('📤 Yuklanmoqda...');
       try {
         const file = new File([blob], 'voice.webm', { type: 'audio/webm' });
-        const url = await sbUploadFile(file, 'audio');
+        const url = await uploadFile(file);
         if (!url) throw new Error('Yuklab bo\'lmadi');
         await sendMsg({ type: 'audio', fileUrl: url, fileName: 'voice.webm', fileSize: blob.size });
       } catch (e) {
@@ -2100,7 +1798,7 @@ $('#rv').onclick = async () => {
       toast('📤 Yuklanmoqda...');
       try {
         const file = new File([blob], 'video.webm', { type: 'video/webm' });
-        const url = await sbUploadFile(file, 'videos');
+        const url = await uploadFile(file);
         if (!url) throw new Error('Yuklab bo\'lmadi');
         await sendMsg({ type: 'video', fileUrl: url, fileName: 'video.webm', fileSize: blob.size });
       } catch (e) {
@@ -2197,7 +1895,7 @@ $('#q').oninput = async (e) => {
   // Supabase'dan foydalanuvchi qidirish
   if (q.length >= 2) {
     try {
-      const users = await sbSearchUsers(q, 10);
+      const users = await searchUsers(q, 10);
       const listEl = $('#list');
       if (users.length && !users.find(u => u.username === me.id)) {
         const userRows = users.filter(u => u.username !== me.id).map(u => {
@@ -2239,7 +1937,7 @@ async function startChatWith(username) {
   }
   
   // Foydalanuvchini keshga yozish
-  const other = await sbFindUser(un);
+  const other = await findUser(un);
   if (other) {
     const allUsers = U().filter(u => u.id !== un);
     allUsers.push({
@@ -2344,7 +2042,7 @@ $('#cta').onclick = async () => {
   
   toast('🔍 Qidirilmoqda...');
   try {
-    const u = await sbFindUser(un);
+    const u = await findUser(un);
     if (!u) return toast('❌ Foydalanuvchi topilmadi: @' + un);
     
     // Keshga qo'shish
@@ -2399,7 +2097,7 @@ $('#status-file').onchange = async e => {
   
   toast('📤 Yuklanmoqda...');
   try {
-    const url = await sbUploadFile(f, 'status');
+    const url = await uploadFile(f);
     if (!url) throw new Error('Yuklab bo\'lmadi');
     
     const statuses = ls.get('tg_status', []);
@@ -2437,7 +2135,7 @@ $('#pp').onclick = async () => {
   if (pfile) {
     toast('📤 Yuklanmoqda...');
     try {
-      const url = await sbUploadFile(pfile, 'posts');
+      const url = await uploadFile(pfile);
       if (!url) throw new Error('Yuklab bo\'lmadi');
       post.fileUrl = url;
       post.fileName = pfile.name;
@@ -2574,7 +2272,7 @@ $('#pic').onchange = async (e) => {
   if (!f) return;
   toast('📤 Yuklanmoqda...');
   try {
-    const url = await sbUploadFile(f, 'avatars');
+    const url = await uploadFile(f);
     if (!url) throw new Error('Yuklab bo\'lmadi');
     me.avatar = url;
     $('#mav').innerHTML = avHtml(me);
@@ -2597,8 +2295,6 @@ $('#sv').onclick = () => {
 
 $('#lo').onclick = async () => {
   if (!confirm('Chiqishni tasdiqlaysizmi?')) return;
-  if (realtimeChannel) { try { sb.removeChannel(realtimeChannel); } catch(e){} }
-  if (presenceChannel) { try { sb.removeChannel(presenceChannel); } catch(e){} }
   ls.set('tg_s', null);
   location.reload();
 };
@@ -2860,10 +2556,6 @@ $('#chdel').onclick = () => {
     if (cs.find(x => x.id === peer && x.t === 'd')) {
       ls.set('tg_c', cs.filter(x => x.id !== peer));
     }
-    if (realtimeChannel) {
-      sb.removeChannel(realtimeChannel);
-      realtimeChannel = null;
-    }
     peer = null;
     $('#delov').classList.add('hidden');
     $('#chat').classList.add('hidden');
@@ -2898,10 +2590,6 @@ $$('.nt[data-v]').forEach(b => {
 
 /* ==================== BACK BUTTONS ==================== */
 $('#back').onclick = () => {
-  if (realtimeChannel) {
-    sb.removeChannel(realtimeChannel);
-    realtimeChannel = null;
-  }
   peer = null;
   $('#app').classList.remove('in-chat');
   $('#chat').classList.add('hidden');
@@ -3061,8 +2749,7 @@ function toEmail() {
 }
 
 /* ==================== CONSOLE INFO ==================== */
-console.log('%c💬 UZ Messenger (Supabase Realtime)', 'color:#2b95d6;font-weight:bold;font-size:16px');
-console.log('%cSupabase:', 'color:#4ade80', SUPABASE_URL);
+console.log('%c💬 UZ Messenger', 'color:#2b95d6;font-weight:bold;font-size:16px');
 
 </script>
 </body>
